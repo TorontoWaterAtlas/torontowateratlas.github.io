@@ -9,7 +9,7 @@ metadata:
   title:
     default: Toronto Water Atlas
     template: '%s — Toronto Water Atlas'
-  description: "The Toronto Water Atlas seeks to re-examine and understand our relationship with water—not simply as a natural resource or a problem to be managed, but as a life-giving source, and a connector of people and of communities."
+  description: 'The Toronto Water Atlas seeks to re-examine and understand our relationship with water—not simply as a natural resource or a problem to be managed, but as a life-giving source, and a connector of people and of communities.'
   robots:
     index: true
     follow: true

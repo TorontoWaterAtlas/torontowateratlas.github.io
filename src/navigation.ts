@@ -11,20 +11,19 @@ export const headerData = {
       href: getPermalink('/about'),
     },
   ],
-  actions: [{ text: 'Join us', href: 'http://tiny.cc/wateratlasinterest', target: '_blank', icon: 'tabler:external-link' }],
+  actions: [
+    { text: 'Join us', href: 'http://tiny.cc/wateratlasinterest', target: '_blank', icon: 'tabler:external-link' },
+  ],
 };
 
 export const footerData = {
   links: [
     {
       title: 'Information',
-      links: [
-        { text: 'About us', href: getPermalink('/about') },
-      ],
+      links: [{ text: 'About us', href: getPermalink('/about') }],
     },
   ],
-  secondaryLinks: [
-  ],
+  secondaryLinks: [],
   socialLinks: [],
   footNote: 'All rights reserved.',
 };

@@ -37,10 +37,8 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="subtitle">
-      This atlas seeks to re-examine and 
-      understand our relationship with water — not simply as a natural resource or a 
-      problem to be managed, but as a life-giving source, and a connector of people and 
-      of communities.
+      This atlas seeks to re-examine and understand our relationship with water — not simply as a natural resource or a
+      problem to be managed, but as a life-giving source, and a connector of people and of communities.
     </Fragment>
   </Hero>
 
@@ -48,7 +46,6 @@ const metadata = {
 
   <!-- <Note /> -->
 
-  
   <!-- Features Widget *************** -->
 
   <Features
@@ -70,8 +67,7 @@ const metadata = {
       },
       {
         title: 'Water and disasters (for example: flooding)',
-        description:
-          'What does a dystopian future of Toronto and its waterways look like?',
+        description: 'What does a dystopian future of Toronto and its waterways look like?',
         icon: 'tabler:ripple',
       },
       {
@@ -98,8 +94,7 @@ const metadata = {
       {
         title: 'Public Facing Resource',
         icon: 'tabler:world',
-        description:
-          'The Atlas will be a digital collection of maps that will be available publicly online.',
+        description: 'The Atlas will be a digital collection of maps that will be available publicly online.',
       },
       {
         title: 'Future Exhibitions and Digital Showcases',
@@ -130,7 +125,7 @@ const metadata = {
       {
         icon: 'tabler:map',
         description:
-          "We will have coworking and tutorial sessions that will introduce you to new data tools and techniques, Python-based data storage infrastructures, including mapping software, and data visualization. You can expect to receive guidance from computer scientists, environmentalists and data specialists, who will be available to help you incorporate relevant data into your work.",
+          'We will have coworking and tutorial sessions that will introduce you to new data tools and techniques, Python-based data storage infrastructures, including mapping software, and data visualization. You can expect to receive guidance from computer scientists, environmentalists and data specialists, who will be available to help you incorporate relevant data into your work.',
       },
     ]}
     image={{
@@ -138,9 +133,11 @@ const metadata = {
       alt: 'Blueprint Image',
     }}
   >
-  <Fragment slot="content">
-    <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Build Your Data and Mapping Skills </h3>
-  </Fragment>
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Build Your Data and Mapping Skills
+      </h3>
+    </Fragment>
 
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -164,9 +161,11 @@ const metadata = {
       alt: 'Astronauts Image',
     }}
   >
-  <Fragment slot="content">
-    <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Platform for Art-Science Collaboration</h3>
-  </Fragment>
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Platform for Art-Science Collaboration
+      </h3>
+    </Fragment>
 
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -197,7 +196,6 @@ const metadata = {
     </Fragment>
   </Content> -->
 
-
   <!-- Brands Widget ****************** -->
 
   <Brands
@@ -219,24 +217,23 @@ const metadata = {
     ]}
   />
 
-
   <!-- Steps Widget ****************** -->
 
   <Steps
-  isReversed={true}
+    isReversed={true}
     title="Call to Action"
     subtitle="We invite contributions from all disciplines—whether you’re an artist, an urban planner, a community leader, or simply someone passionate about water—to help us co-create this evolving resource!"
-    items={([
+    items={[
       {
         title: 'Artists, historians and designers',
         description:
-          "to help convey what an alternative vision for Toronto’s future with water looks like, what a different collective cultural story feels like, and the role of every community and industry. This can be through speculative visuals, or through other multimedia artifacts/exhibitions",
+          'to help convey what an alternative vision for Toronto’s future with water looks like, what a different collective cultural story feels like, and the role of every community and industry. This can be through speculative visuals, or through other multimedia artifacts/exhibitions',
         icon: 'tabler:palette',
       },
       {
         title: 'Community organizers and members',
         description:
-          "to help bring forth local, place-based narratives and experiences with water, and to envision a future where Toronto lives with, rather than against, water.",
+          'to help bring forth local, place-based narratives and experiences with water, and to envision a future where Toronto lives with, rather than against, water.',
         icon: 'tabler:users-group',
       },
       {
@@ -250,13 +247,12 @@ const metadata = {
       //   description: '<a href="http://tiny.cc/wateratlasinterest">http://tiny.cc/wateratlasinterest</a>',
       //   icon: 'tabler:check',
       // },
-    ].map(item => ({title: item.title, icon: item.icon})))}
+    ].map((item) => ({ title: item.title, icon: item.icon }))}
     image={{
       src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
       alt: 'Steps image',
     }}
   />
-
 
   <!-- CallToAction Widget *********** -->
 
@@ -271,15 +267,13 @@ const metadata = {
       },
     ]}
   >
-    <Fragment slot="title">
-      Join Us in Shaping the Atlas
-    </Fragment>
+    <Fragment slot="title"> Join Us in Shaping the Atlas </Fragment>
 
     <Fragment slot="subtitle">
       Please express interest by filling out <a href="http://tiny.cc/wateratlasinterest">this form</a> by December 15!
     </Fragment>
   </CallToAction>
-  
+
   <!-- Features3 Widget ************** -->
 
   <Features3
@@ -309,6 +303,4 @@ const metadata = {
     isAfterContent={true}
     subtitle="This structure doesn't work for you? No worries! Let us know so that we can brainstorm something that works!"
   />
-
-
 </Layout>
