@@ -32,10 +32,11 @@ const {
                 <Image
                   src={image.src}
                   alt={image.alt || ''}
-                  class="max-w-fit"
-                  width="auto"
-                  height="120"
+                  class="max-h-fit max-w-fit"
+                  width="320"
+                  height="90"
                   layout="fixed"
+                  style="object-fit: contain"
                 />
               </div>
             )
