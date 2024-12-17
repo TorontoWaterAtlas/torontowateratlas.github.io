@@ -242,16 +242,8 @@ const metadata = {
           'Your expertise with data will help us anchor the atlas in the realities of climate change. This project is an opportunity to work alongside artists and communities to make scientific knowledge accessible and engaging for everyone.',
         icon: 'tabler:chart-dots',
       },
-      // {
-      //   title: 'Please express interest by filling out <a href="http://tiny.cc/wateratlasinterest">this form</a> by December 15!',
-      //   description: '<a href="http://tiny.cc/wateratlasinterest">http://tiny.cc/wateratlasinterest</a>',
-      //   icon: 'tabler:check',
-      // },
     ].map((item) => ({ title: item.title, icon: item.icon }))}
-    image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
-    }}
+    classes={{container: "max-w-3xl"}}
   />
 
   <!-- CallToAction Widget *********** -->
@@ -270,7 +262,7 @@ const metadata = {
     <Fragment slot="title"> Join Us in Shaping the Atlas </Fragment>
 
     <Fragment slot="subtitle">
-      Please express interest by filling out <a href="http://tiny.cc/wateratlasinterest">this form</a> by December 15!
+      Please express interest by filling out <a href="http://tiny.cc/wateratlasinterest">the form below</a>!
     </Fragment>
   </CallToAction>
 
@@ -295,12 +287,13 @@ const metadata = {
         icon: 'tabler:map-up',
       },
     ]}
+    classes={{container: "max-w-3xl"}}
   />
 
   <!-- Features3 Widget ************** -->
 
   <Features3
     isAfterContent={true}
-    subtitle="This structure doesn't work for you? No worries! Let us know so that we can brainstorm something that works!"
+    subtitle="This structure doesn't work for you? No worries! Let us know so that we can brainstorm something that works! Email us at <a class='font-extrabold' href='mailto:torontowateratlas@gmail.com'>torontowateratlas@gmail.com</a>"
   />
 </Layout>
