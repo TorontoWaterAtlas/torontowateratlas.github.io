@@ -28,14 +28,13 @@ const {
         images.map(
           (image) =>
             image.src && (
-              <div class="flex justify-center col-span-1 my-2 lg:my-4 py-1 px-3 rounded-md dark:bg-white">
+              <div class="flex justify-center col-span-1 my-2 lg:my-4 py-1 px-3 rounded-md">
                 <Image
                   src={image.src}
                   alt={image.alt || ''}
                   class="max-h-fit max-w-fit"
                   width="320"
                   height="90"
-                  layout="fixed"
                   style="object-fit: contain"
                 />
               </div>
