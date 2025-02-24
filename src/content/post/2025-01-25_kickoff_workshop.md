@@ -6,4 +6,4 @@ image: https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Philosopher%27s
 category: Events
 ---
 
-Please find the [workshop slide deck here](/WaterAtlasCoworkingPresentation.pdf)
+Please find the [workshop slide deck here](/WaterAtlasWorkshopPresentation.pdf)

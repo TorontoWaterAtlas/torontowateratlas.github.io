@@ -8,3 +8,5 @@ tags:
   - OpenStreetMap
   - GitHub
 ---
+
+Please find the [workshop slide deck here](/WaterAtlasCoworkingPresentation.pdf)
