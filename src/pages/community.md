@@ -11,7 +11,6 @@ layout: '~/layouts/MarkdownLayout.astro'
 
 [Atlas Community Repository](https://github.com/TorontoWaterAtlas/atlas-community)
 
-
 ## Communication
 
 [Matrix Element Messenger](https://matrix.to/#/%23torontowateratlas:matrix.org)

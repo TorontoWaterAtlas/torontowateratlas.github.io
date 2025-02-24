@@ -51,11 +51,12 @@ const { post, url } = Astro.props;
             )
           }
           {
-            post.readingTime && (
+            (post.readingTime && (
               <>
                 &nbsp;· <span>{post.readingTime}</span> min read
               </>
-            ) || ''
+            )) ||
+              ''
           }
         </p>
       </div>
@@ -72,7 +73,7 @@ const { post, url } = Astro.props;
       </p>
 
       {
-        (!post.youtube_id && post.image) ? (
+        !post.youtube_id && post.image ? (
           <Image
             src={post.image}
             class="max-w-full lg:max-w-[900px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
@@ -86,13 +87,7 @@ const { post, url } = Astro.props;
           />
         ) : (
           <div class="max-w-3xl mx-auto px-4 sm:px-6">
-          {
-            post.youtube_id ? (
-              <YouTube id={post.youtube_id} />
-            ) : (
-                <div class="border-t dark:border-slate-700" />
-            )
-          }
+            {post.youtube_id ? <YouTube id={post.youtube_id} /> : <div class="border-t dark:border-slate-700" />}
           </div>
         )
       }
