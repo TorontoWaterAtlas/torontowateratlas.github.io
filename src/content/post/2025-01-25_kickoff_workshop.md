@@ -5,3 +5,5 @@ excerpt: This workshop provided an overview of the project, as well as a range o
 image: https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Philosopher%27s_Walk%2C_Toronto_-_DSC09871.JPG/320px-Philosopher%27s_Walk%2C_Toronto_-_DSC09871.JPG
 category: Events
 ---
+
+Please find the [workshop slide deck here](/WaterAtlasCoworkingPresentation.pdf)

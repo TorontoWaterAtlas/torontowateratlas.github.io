@@ -2,6 +2,8 @@
 
 Build using Astro using the Astrowind template.
 
+[Website](https://torontowateratlas.github.io)
+
 ## Getting started
 
 ### Project structure
