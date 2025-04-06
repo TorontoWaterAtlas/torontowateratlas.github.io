@@ -13,7 +13,7 @@ layout: '~/layouts/MarkdownLayout.astro'
 
 ## Communication
 
-[Matrix Element Messenger](https://matrix.to/#/%23torontowateratlas:matrix.org)
+[Atlas Community Discussions](https://github.com/TorontoWaterAtlas/atlas-community/discussions)
 
 [Email](mailto:torontowateratlas@gmail.com)
 
