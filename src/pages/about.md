@@ -3,12 +3,47 @@ title: 'About Us'
 layout: '~/layouts/MarkdownLayout.astro'
 ---
 
+## Project Overview
 **The Toronto Water Atlas seeks to re-examine and understand our relationship with water—not simply as a natural resource or a problem to be managed, but as a life-giving source, and a connector of people and of communities.** It is an imaginative, interactive, and collaborative project that re-envisions the role of water in shaping the present and future of the Greater Toronto and Hamilton Area (GTHA), and the GTHA’s relationship with its rivers, creeks, and waterways. This Atlas is not simply a map of water systems or flood risks — it aims to be an artistic and critical examination of our relationship with water. As Toronto faces rising challenges from climate change, urban expansion, and social inequity, water remains both a vital resource and an area of conflict. This Atlas aims to shift the conversation from managing water to living with water—considering it as a shaper of ecosystems, cultures, and communities.
 
-Water in Toronto is often hidden—buried rivers run beneath our feet, and stormwater systems work quietly, out of sight, until something goes wrong (like flooding). Yet water is deeply intertwined with the city’s past, present, and future. In the 18th and 19th centuries, Lake Ontario was a key port that enabled trade and transport, connecting Toronto to regional markets across the Great Lakes and beyond. The Humber and Don Rivers brought early settlers and traders into the city, and these waterways shaped the city’s early economy, transport, and settlement patterns. The rivers and creeks that used to run through Toronto were celebrated and cherished parts of the city. Today, they are buried and hidden beneath concrete, nowhere to be seen! Yet as climate change drives more frequent and intense storms, these buried waterways resurface as floods. If we don’t take an alternate approach that better understands and respects our relationship with water, flooding events will escalate and become more frequent in the future, impacting both urban infrastructure and communities for the worse.
+The aim of this project is to:
+* Highlight a **plurality of perspectives** about the GTHA’s relationship with its rivers, creeks, and waterways.
+* Build an **alternate collective understanding** of water through an emphasis on **local experiences and knowledges**.
+* Reimagine what a future of **living with water** could look like for GTHA.
 
-Questions and issues related to water—our rivers, lakes, and hidden creeks—are also inherently political. Access to water, decisions about where rivers flow and where they are buried, and who is protected from flooding are all shaped by the broad socio-political power dynamics in the city. The Atlas seeks to render visible these dynamics, showcasing how water issues are tied up with housing, zoning, economic inequality, and environmental justice.
+## Why are these plural, and diverse perspectives about water important?
+1. **Water Impacts Everyone, and Everything:** Decisions about water—where it flows, who has access, and how it’s managed—are shaped by socio-political dynamics.
+2. **Responding to Climate Change and Urban Resilience:** As climate change drives more frequent and intense storms, our buried waterways resurface as floods. The intensification of flooding and water crises due to climate change requires alternate strategies informed by a collective and plurality of perspectives.
+3. **Reimagining Relationships With Water:** Water is deeply intertwined with the our past, and present, yet water is often hidden and forgotten today. **_Building an alternate, collective understanding can help us imagine a future of living with water._**
+4. **Alternate Approaches Require Diverse Expertise:** Working towards this alternate approach requires insights from a range of disciplines.
 
-This project is an invitation to **critique, speculate, and create**. It asks: How do we think differently about water? What if we embraced water as a connector of communities, not just a resource to be controlled? What would Toronto look like if we opened up our buried rivers, expanded our blue-green spaces, or designed our neighborhoods to adapt to rising water? For example, envision Taddle Creek—currently buried beneath Philosopher’s Walk—resurfaced as a public, blue-green corridor connecting neighborhoods all the way from Wychwood Park to the Harbourfront. The creek’s restored path could bring back a vibrant, biodiverse habitat into the urban landscape, which would offer an accessible green space that enhances community life and reduces flood risk. Or imagine a Don River, where seasonal floodplains are transformed into parklands that naturally adapt to changing water levels, creating lively public spaces for recreation and ecological education.
+For a longer description of the project, please visit [tiny.cc/wateratlasinfo](https://tiny.cc/wateratlasinfo)
 
-Through this project, artists, scientists, academics, environmental activists, and community members will have the chance to speculate, reimagine, and create an atlas that not only captures diverse water-related futures of Toronto but also critiques present urban policies, design practices, and environmental priorities. In co-creating this playful, speculative, and generative artifact, participants will have the opportunity to contribute their own stories, visions, and insights about Toronto’s waterways. Taken together, these will form an alternate collective understanding about this natural resource, our relationship to it, and a re-imagination of what Toronto’s future with water could look like.
+## Our Values & Approach
+At the heart of the Toronto Water Atlas is a commitment to collaboration, care, transparency, and pluralism. We believe that how we talk about water—and who gets to shape that conversation—matters deeply. As a result, this project is grounded in the following values:
+
+**Collaboration:** This is not a project being built for participants, but with them. Everyone involved is a co-creator, bringing their own questions, skills, and motivations. Contributions are made not for any one institution or individual, but in the spirit of shared inquiry and mutual learning.
+
+**Plurality and inclusivity:** There is no single story of water in Toronto. The Atlas holds space for many voices and ways of knowing—including artistic, scientific, personal, Indigenous, and community-based perspectives. We actively seek to surface voices and water bodies that are often ignored or overlooked.
+
+**Shared ownership and long-term vision:** While a small team is currently leading and managing the Atlas, the goal is for this project to take on a life of its own. We see this as an evolving platform that will grow over time, guided by those most committed to water justice, community storytelling, and climate futures in the GTHA. We are working toward a model of distributed authorship and shared stewardship.
+
+**Reflexivity and openness:** We are learning as we go. We welcome critique, ideas, and feedback—especially when something isn’t working or could be made more inclusive, accessible, or meaningful.
+
+Finally, the Toronto Water Atlas is both a public resource and an ongoing research project led by researchers affiliated with the [Toronto Climate Observatory](https://www.climateobservatory.ca/). All aspects of the project involving research have been reviewed and approved by a Research Ethics Board (REB). We are committed to making clear how documentation and contributions might be used, and this information is repeated at the beginning of every event or meetup:
+* Any data used for research will be fully anonymized. No names, identifying details, or direct quotes will be linked to individuals unless explicitly approved.
+* Photos and recordings taken during workshops or public events are used for documentation and qualitative analysis. If anyone prefers not to be included in these, they can opt out at any time.
+* Atlas pages and contributions may be referenced in research outputs (e.g., academic articles or presentations), but only as illustrative examples and never in a way that identifies individuals without prior consent.
+* Contributors will be provided access to any resulting publications or exhibitions where their work is featured. Similar to: [Similar to: https://antievictionmap.com/writing-new](https://antievictionmap.com/writing-new)
+* Participants and contributors can withdraw from the research study without any impact on their participation and contribution to the atlas.
+
+
+
+
+
+
+
+
+
+
+
