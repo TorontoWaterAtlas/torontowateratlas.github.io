@@ -1,202 +1,44 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
-import Hero from '~/components/widgets/Hero.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features3 from '~/components/widgets/Features3.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Content from '~/components/widgets/Content.astro';
+import VideoHero from '~/components/widgets/VideoHero.astro';
+import ProjectGrid from '~/components/widgets/ProjectGrid.astro';
+import Brands from '~/components/widgets/Brands.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
-import Brands from '~/components/widgets/Brands.astro';
 const metadata = {
   title: 'Water Atlas — Toronto Water Atlas',
   ignoreTitleTemplate: true,
 };
+
+const projects = [
+  {
+    title: 'Water Attention Map',
+    subtitle: "Which Waters Matter? Media Attention to Toronto's Waterways (2010–2025)",
+    image: '/water_attention_map_thumbnail-optim.png',
+    href: '/WaterAttention/rivers2.html',
+  },
+  {
+    title: 'Project Title 2',
+    subtitle: 'Description of project 2',
+    image: '/path-to-image-2.jpg',
+    href: '/project-2',
+  },
+  {
+    title: 'Project Title 3',
+    subtitle: 'Description of project 3',
+    image: '/path-to-image-3.jpg',
+    href: '/project-3',
+  },
+];
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
-
-  <Hero
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Join us',
-        href: 'http://tiny.cc/wateratlasinterest',
-        target: '_blank',
-        icon: 'tabler:external-link',
-      },
-      { text: 'Learn more', href: '#features' },
-    ]}
-    image={{ src: '~/assets/images/toronto1.jpg', alt: 'Toronto Image' }}
-  >
-    <Fragment slot="title">
-      Welcome to the <span class="hidden xl:inline">Toronto</span>
-      <span class="text-accent dark:text-white highlight"> Water Atlas</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      This atlas seeks to re-examine and understand our relationship with water — not simply as a natural resource or a
-      problem to be managed, but as a life-giving source, and a connector of people and of communities.
-    </Fragment>
-  </Hero>
-
-  <!-- Note Widget ******************* -->
-
-  <!-- <Note /> -->
-
-  <!-- Features Widget *************** -->
-
-  <Features
-    id="features"
-    title="Examples of Features and Topics in the Atlas"
-    subtitle="This Atlas is a plural artifact — we want to see Toronto’s relationship with water from many perspectives. We welcome a range of creative approaches, and relevant themes might include:"
-    items={[
-      {
-        title: 'Speculative Futures',
-        description:
-          'Imagine a Toronto where buried rivers like Garrison Creek are daylighted, reshaping urban and social landscapes. What if buried rivers resurfaced, reshaping the city’s infrastructure and social spaces? How might Toronto look if it embraced, rather than constrained, its waterways? What if water were reintegrated into everyday city life, creating green-blue corridors and transforming neighborhoods?',
-        icon: 'tabler:aperture',
-      },
-      {
-        title: 'Toronto’s Culture and History With Water',
-        description:
-          'How have Toronto’s waterways shaped its culture and communities over centuries? How can we reconnect with this forgotten culture and history? How can these histories reemerge in the city’s future?',
-        icon: 'tabler:restore',
-      },
-      {
-        title: 'Water and disasters (for example: flooding)',
-        description: 'What does a dystopian future of Toronto and its waterways look like?',
-        icon: 'tabler:ripple',
-      },
-      {
-        title: 'Multimedia Visualizations',
-        description:
-          'What does an interactive multimedia visualization (including audio, video, or animation) of Toronto and its waterways/creeks look like?',
-        icon: 'tabler:movie',
-      },
-    ]}
+  <VideoHero videoSrc="/videos/water-bg.mp4" />
+  
+  <ProjectGrid 
+    projects={projects}
   />
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    title="What You Will Gain as a Contributor"
-    items={[
-      {
-        title: 'Exhibition at the School of the Environment in April 2025',
-        icon: 'tabler:photo-hexagon',
-        description:
-          'The initial exhibition will be held at the University of Toronto’s School of the Environment (tentatively early-mid Summer 2025), providing an academic and public venue for your work to be showcased. This exhibition will attract visitors from Toronto’s environmental, academic, and artistic communities, giving you exposure to a diverse audience interested in both the creative and practical implications of water in urban life.',
-      },
-      {
-        title: 'Public Facing Resource',
-        icon: 'tabler:world',
-        description: 'The Atlas will be a digital collection of maps that will be available publicly online.',
-      },
-      {
-        title: 'Future Exhibitions and Digital Showcases',
-        icon: 'tabler:photo-hexagon',
-        description:
-          'We plan to expand to other public venues and digital platforms. As the Atlas evolves, our goal is to secure additional spaces for exhibiting, both in Toronto’s local community centers and public spaces and in online galleries.',
-      },
-    ]}
-    image={{
-      src: 'https://live.staticflickr.com/8077/8308609020_7efd91693e_b.jpg',
-      alt: 'Colorful Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Public-Facing Opportunities</h3>
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        icon: 'tabler:map',
-        description:
-          'We will have coworking and tutorial sessions that will introduce you to new data tools and techniques, Python-based data storage infrastructures, including mapping software, and data visualization. You can expect to receive guidance from computer scientists, environmentalists and data specialists, who will be available to help you incorporate relevant data into your work.',
-      },
-    ]}
-    image={{
-      src: 'https://images.pexels.com/photos/18798290/pexels-photo-18798290/free-photo-of-a-paper-boat-made-out-of-a-map-on-the-water.jpeg',
-      alt: 'Blueprint Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Build Your Data and Mapping Skills
-      </h3>
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        icon: 'tabler:cell',
-        description:
-          'You will be encouraged to work in interdisciplinary groups (scientists, planners, artists, community organizers, etc.) and develop sections or pages of the atlas. We will be inviting a range of speakers to give presentations during the workshops on themes related to the atlas.',
-      },
-    ]}
-    image={{
-      src: '~/assets/images/collab.jpg',
-      alt: 'Astronauts Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Platform for Art-Science Collaboration
-      </h3>
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <!-- <Content
-    isAfterContent
-    items={[
-      {
-        description:
-          'The Atlas is not just about documenting the past—it’s about imagining the future. You will have the opportunity to contribute to a living, evolving resource that helps Toronto rethink its relationship with water and shape a future that is more just, sustainable, and imaginative.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
-    }}
-  >
-  <Fragment slot="content">
-    <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">A Chance to Shape Toronto’s Future</h3>
-  </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content> -->
-
-  <!-- Brands Widget ****************** -->
 
   <Brands
     title="Collaborators"
@@ -217,37 +59,6 @@ const metadata = {
     ]}
   />
 
-  <!-- Steps Widget ****************** -->
-
-  <Steps
-    isReversed={true}
-    title="Call to Action"
-    subtitle="We invite contributions from all disciplines—whether you’re an artist, an urban planner, a community leader, or simply someone passionate about water—to help us co-create this evolving resource!"
-    items={[
-      {
-        title: 'Artists, historians and designers',
-        description:
-          'to help convey what an alternative vision for Toronto’s future with water looks like, what a different collective cultural story feels like, and the role of every community and industry. This can be through speculative visuals, or through other multimedia artifacts/exhibitions',
-        icon: 'tabler:palette',
-      },
-      {
-        title: 'Community organizers and members',
-        description:
-          'to help bring forth local, place-based narratives and experiences with water, and to envision a future where Toronto lives with, rather than against, water.',
-        icon: 'tabler:users-group',
-      },
-      {
-        title: 'Scientists and environmental experts',
-        description:
-          'Your expertise with data will help us anchor the atlas in the realities of climate change. This project is an opportunity to work alongside artists and communities to make scientific knowledge accessible and engaging for everyone.',
-        icon: 'tabler:chart-dots',
-      },
-    ].map((item) => ({ title: item.title, icon: item.icon }))}
-    classes={{ container: 'max-w-3xl' }}
-  />
-
-  <!-- CallToAction Widget *********** -->
-
   <CallToAction
     actions={[
       {
@@ -259,41 +70,9 @@ const metadata = {
       },
     ]}
   >
-    <Fragment slot="title"> Join Us in Shaping the Atlas </Fragment>
-
+    <Fragment slot="title">Join Us in Shaping the Atlas</Fragment>
     <Fragment slot="subtitle">
       Please express interest by filling out <a href="http://tiny.cc/wateratlasinterest">the form below</a>!
     </Fragment>
   </CallToAction>
-
-  <!-- Features3 Widget ************** -->
-
-  <Features3
-    title="Commitment and Responsibilities"
-    subtitle="To ensure meaningful collaboration, we ask all members of the project to participate in a minimum of <strong>one workshop and one mapathon</strong>."
-    columns={2}
-    isBeforeContent={true}
-    items={[
-      {
-        title: 'Monthly Workshops: Saturdays 2-5 PM',
-        description:
-          'Structured time to collaborate, explore, prototype, and finalize atlas sections/pages in conversation with the project community!',
-        icon: 'tabler:artboard',
-      },
-      {
-        title: 'Bi-Weekly Mapathons: Tuesdays 6-9 PM',
-        description:
-          'Come hang out at the coworking sessions to share progress, receive feedback, and learn something new!',
-        icon: 'tabler:map-up',
-      },
-    ]}
-    classes={{ container: 'max-w-3xl' }}
-  />
-
-  <!-- Features3 Widget ************** -->
-
-  <Features3
-    isAfterContent={true}
-    subtitle="This structure doesn't work for you? No worries! Let us know so that we can brainstorm something that works! Email us at <a class='font-extrabold' href='mailto:torontowateratlas@gmail.com'>torontowateratlas@gmail.com</a>"
-  />
 </Layout>

@@ -1,0 +1,59 @@
+---
+export interface Project {
+  title: string;
+  subtitle?: string;
+  image: string;
+  href: string;
+}
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  projects: Project[];
+}
+
+const { title, subtitle, projects } = Astro.props;
+---
+
+<section class="py-16 px-4 sm:px-6 lg:px-8 bg-page dark:bg-dark">
+  <div class="max-w-7xl mx-auto">
+    {title && (
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold dark:text-white mb-4">{title}</h2>
+        {subtitle && <p class="text-lg text-muted dark:text-slate-400">{subtitle}</p>}
+      </div>
+    )}
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project) => (
+        <a 
+          href={project.href}
+          class="group relative block aspect-[4/3] overflow-hidden rounded-lg bg-slate-800"
+        >
+          <!-- Image -->
+          <img
+            src={project.image}
+            alt={project.title}
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          
+          <!-- Overlay -->
+          <div class="absolute inset-0 bg-black/40 transition-opacity duration-300 group-hover:bg-black/60"></div>
+          
+          <!-- Content -->
+          <div class="absolute inset-0 flex flex-col justify-end p-6">
+            <h3 class="text-xl md:text-2xl font-semibold text-white mb-2 transition-transform duration-300 group-hover:-translate-y-2">
+              {project.title}
+              <span class="inline-block ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </h3>
+            {project.subtitle && (
+              <p class="text-white/80 text-sm transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                {project.subtitle}
+              </p>
+            )}
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
