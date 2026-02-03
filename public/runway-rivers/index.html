@@ -98,26 +98,46 @@
       margin-bottom: 0.5rem;
     }
 
-    .hero-subtitle {
-      font-size: 1.125rem;
-      opacity: 0.9;
-      max-width: 600px;
-    }
-
-    .scroll-hint {
+    /* Sound Toggle Button */
+    .sound-toggle {
       position: absolute;
       bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
-      text-align: center;
-      animation: bounce 2s infinite;
-      pointer-events: none;
+      right: 2rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 50;
     }
 
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(10px); }
+    .sound-toggle:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.05);
+    }
+
+    .sound-toggle svg {
+      width: 24px;
+      height: 24px;
+      fill: white;
+    }
+
+    .sound-toggle .sound-on {
+      display: none;
+    }
+
+    .sound-toggle.unmuted .sound-off {
+      display: none;
+    }
+
+    .sound-toggle.unmuted .sound-on {
+      display: block;
     }
 
     /* Introduction Section */
@@ -418,6 +438,70 @@
       font-size: 0.95rem;
     }
 
+    /* About the Artist */
+    .about-artist {
+      padding: 5rem 2rem;
+      background: var(--gray-light);
+    }
+
+    .about-artist-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .about-artist-inner {
+        grid-template-columns: 1fr 1.2fr;
+        gap: 4rem;
+      }
+    }
+
+    .about-artist-image {
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .about-artist-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .about-artist-content {
+      text-align: left;
+    }
+
+    .about-artist-label {
+      display: inline-block;
+      background: var(--blue-medium);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 2rem;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .about-artist-content h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+      color: var(--blue-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-artist-content p {
+      color: #475569;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
     /* Footer */
     .project-footer {
       background: var(--blue-dark);
@@ -465,21 +549,26 @@
 <body>
 <a href="/" class="back-link">← Back to Atlas</a>
 
-<!-- Hero with Drone Video -->
+<!-- Hero with YouTube Video -->
 <section class="hero">
   <div class="hero-video">
-    <iframe
-      src="https://www.youtube.com/embed/LeNw1PwjFUM?autoplay=1&mute=1&loop=1&playlist=LeNw1PwjFUM&controls=0&showinfo=0&rel=0&modestbranding=1"
-      frameborder="0"
-      allow="autoplay; encrypted-media"
-      allowfullscreen
-    ></iframe>
+    <div id="youtubePlayer"></div>
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1 class="hero-title">Runway Rivers</h1>
-    <p class="hero-subtitle">Daylighting the lost waterways beneath Downsview Airport</p>
+<!--    <h1 class="hero-title">Runway Rivers</h1>-->
+<!--    <p class="hero-subtitle">Daylighting the lost waterways beneath Downsview Airport</p>-->
   </div>
+
+  <!-- Sound Toggle Button -->
+  <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
+    <svg class="sound-off" viewBox="0 0 24 24">
+      <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+    </svg>
+    <svg class="sound-on" viewBox="0 0 24 24">
+      <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+    </svg>
+  </button>
 </section>
 
 <!-- Introduction -->
@@ -581,7 +670,7 @@
 <section class="voices">
   <div class="voices-inner">
     <div class="voices-header">
-      <h2>Voices of the Rivers</h2>
+      <h2>Stories and Memories of the Rivers</h2>
       <p>Meet the experts, knowledge keepers, and community members who helped bring Runway Rivers to life.</p>
     </div>
     <div class="voices-grid">
@@ -693,6 +782,25 @@
 <!--  </div>-->
 <!--</section>-->
 
+<!-- About the Artist -->
+<section class="about-artist">
+  <div class="about-artist-inner">
+    <div class="about-artist-image">
+      <img src="/runway-rivers/images/john_notten.png" alt="John Notten with mobile canoe">
+    </div>
+    <div class="about-artist-content">
+      <span class="about-artist-label">About the Artist</span>
+      <h2>John Notten</h2>
+      <p>
+        John Notten is a Toronto-based contemporary artist and educator. His work is shown primarily in the public realm, with large-scale ambitious projects presented throughout Toronto and across Ontario. His art practice focuses on the reconfiguration and decontextualization of common, mundane objects that are reimagined in unconventional ways.
+      </p>
+      <p>
+        The immersive, interactive installations Notten creates offer a radical shift in the meanings of the materials used. Addressing issues of displacement, consumerism and power, he creates participatory installations that immerse the viewer in alternative environments through the re-crafting and repurposing of multiple, prefabricated objects.
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- Footer -->
 <footer class="project-footer">
   <p>
@@ -702,5 +810,64 @@
     Featuring artwork by <strong>Flips</strong> · Stories shared by <strong>Helen Mills</strong> (Lost Rivers Toronto), <strong>Darin Wybenga</strong> (Mississaugas of the Credit First Nation), and the <strong>Northcrest</strong> team · Part of the <a href="/">Toronto Water Atlas</a>
   </p>
 </footer>
+
+
+<!-- YouTube IFrame API -->
+<script>
+  // Load YouTube IFrame API
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  var isMuted = true;
+
+  // Called automatically when YouTube API is ready
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtubePlayer', {
+      videoId: 'LeNw1PwjFUM',
+      playerVars: {
+        autoplay: 1,
+        mute: 1,
+        loop: 1,
+        playlist: 'LeNw1PwjFUM',
+        controls: 0,
+        showinfo: 0,
+        rel: 0,
+        modestbranding: 1,
+        playsinline: 1,
+        disablekb: 1,
+        fs: 0,
+        iv_load_policy: 3
+      },
+      events: {
+        'onReady': onPlayerReady
+      }
+    });
+  }
+
+  function onPlayerReady(event) {
+    event.target.playVideo();
+  }
+
+  // Sound toggle functionality
+  const soundToggle = document.getElementById('soundToggle');
+
+  soundToggle.addEventListener('click', () => {
+    if (player && player.isMuted) {
+      if (player.isMuted()) {
+        player.unMute();
+        soundToggle.classList.add('unmuted');
+        isMuted = false;
+      } else {
+        player.mute();
+        soundToggle.classList.remove('unmuted');
+        isMuted = true;
+      }
+    }
+  });
+</script>
+
 </body>
 </html>

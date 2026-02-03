@@ -13,6 +13,12 @@ const metadata = {
 
 const projects = [
   {
+    title: 'Runway Rivers',
+    subtitle: 'Daylighting the lost waterways beneath Downsview Airport.',
+    image: '/runway-rivers/images/thumbnail.png',
+    href: '/runway-rivers/index.html',
+  },
+  {
     title: "A People's Map of the Don River",
     subtitle: 'Investigating the histories and geographies of the Wonscontonach/Don River.',
     image: '/don-map/don-map-thumbnail.png',
@@ -24,18 +30,6 @@ const projects = [
     image: '/attention-map/attention-thumbnail.png',
     href: '/WaterAttention/rivers2.html',
   },
-  {
-    title: 'Runway Rivers',
-    subtitle: 'Daylighting the lost waterways beneath Downsview Airport.',
-    image: '/runway-rivers/images/thumbnail.png',
-    href: '/runway-rivers/index.html',
-  },
-  {
-    title: 'Project Title 3',
-    subtitle: 'Description of project 3',
-    image: '/path-to-image-3.jpg',
-    href: '/project-3',
-  },
 ];
 ---
 
@@ -43,6 +37,7 @@ const projects = [
   <VideoHero videoSrc="/videos/water-bg.mp4" />
   
   <ProjectGrid 
+    title="Maps"
     projects={projects}
   />
 
