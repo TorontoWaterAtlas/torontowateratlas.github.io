@@ -272,26 +272,65 @@
 
     .voices-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .voices-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
     }
 
     .voice-card {
-      background: white;
-      border-radius: 1rem;
+      position: relative;
+      border-radius: 0.75rem;
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: block;
+      text-decoration: none;
     }
 
     .voice-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     }
 
     .voice-card img {
       width: 100%;
       height: auto;
       display: block;
+    }
+
+    .voice-card .play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .voice-card:hover .play-icon {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .voice-card .play-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--blue-dark);
+      margin-left: 4px;
     }
 
     /* Quote Section */
@@ -441,11 +480,6 @@
     <h1 class="hero-title">Runway Rivers</h1>
     <p class="hero-subtitle">Daylighting the lost waterways beneath Downsview Airport</p>
   </div>
-  <div class="scroll-hint">
-    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M12 5v14M5 12l7 7 7-7"/>
-    </svg>
-  </div>
 </section>
 
 <!-- Introduction -->
@@ -538,7 +572,63 @@
       </p>
     </div>
     <div class="story-image">
-      <img src="/runway-rivers/images/Helen_Mud_creek.png" alt="Mud Creek - Still Flowing">
+      <img src="/runway-rivers/images/Helen%20Mud%20creek.png" alt="Mud Creek - Still Flowing">
+    </div>
+  </div>
+</section>
+
+<!-- Voices Section -->
+<section class="voices">
+  <div class="voices-inner">
+    <div class="voices-header">
+      <h2>Voices of the Rivers</h2>
+      <p>Meet the experts, knowledge keepers, and community members who helped bring Runway Rivers to life.</p>
+    </div>
+    <div class="voices-grid">
+      <!-- Row 1 -->
+      <a href="https://vimeo.com/1090115541" target="_blank" rel="noopener" class="voice-card">
+        <img src="/runway-rivers/images/mark_sault.png" alt="Mark Sault - Knowledge Holder, Mississaugas of the Credit First Nation">
+        <div class="play-icon">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </a>
+
+      <a href="https://vimeo.com/user25714668" target="_blank" rel="noopener" class="voice-card">
+        <img src="/runway-rivers/images/helen_mills.png" alt="Helen Mills - Founder & Co-Director, Lost Rivers at Toronto Green Community">
+        <div class="play-icon">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </a>
+
+      <!-- Row 2 -->
+      <a href="https://vimeo.com/1090082219" target="_blank" rel="noopener" class="voice-card">
+        <img src="/runway-rivers/images/darin-wybenga.png" alt="Darin Wybenga - Knowledge Holder, Mississaugas of the Credit First Nation">
+        <div class="play-icon">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </a>
+
+      <a href="https://vimeo.com/1090107691" target="_blank" rel="noopener" class="voice-card">
+        <img src="/runway-rivers/images/luby_garejko.png" alt="Luby Garejko - Former Employee, De Havilland Aircraft of Canada">
+        <div class="play-icon">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </a>
+
+      <!-- Row 3 -->
+      <a href="https://vimeo.com/1089935549" target="_blank" rel="noopener" class="voice-card">
+        <img src="/runway-rivers/images/carolyn_king.png" alt="Carolyn King, C.M. - Elder, Mississaugas of the Credit First Nation">
+        <div class="play-icon">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </a>
+
+      <a href="https://vimeo.com/1093692102" target="_blank" rel="noopener" class="voice-card">
+        <img src="/runway-rivers/images/christopher_eby.png" alt="Christopher Eby - Executive Vice-President, Corporate and Public Affairs, Northcrest Developments">
+        <div class="play-icon">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -551,33 +641,12 @@
   <cite>— Runway Rivers</cite>
 </section>
 
-<!-- Voices Section -->
-<section class="voices">
-  <div class="voices-inner">
-    <div class="voices-header">
-      <h2>Voices of the Rivers</h2>
-      <p>Meet the experts, knowledge keepers, and artists who brought Runway Rivers to life.</p>
-    </div>
-    <div class="voices-grid">
-      <div class="voice-card">
-        <img src="/runway-rivers/images/Helen_sign.png" alt="Helen Mills">
-      </div>
-      <div class="voice-card">
-        <img src="/runway-rivers/images/Darin_sign.png" alt="Darin Wybenga">
-      </div>
-      <div class="voice-card">
-        <img src="/runway-rivers/images/flips_sign.png" alt="Flips - Artist">
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- The Experience -->
 <section class="experience">
   <div class="experience-inner">
     <h2>The Runway Rivers Experience</h2>
     <p>
-      Runway Rivers brings these lost waterways to the surface. Explore it by climbing into a canoe and travelling down the rivers and streams that once flowed here. Meandering streams are painted on the tarmac not far from where they actually flowed.
+    Runway Rivers brings these lost waterways to the surface. Explore it by climbing into a canoe and travelling down the rivers and streams that once flowed here. Meandering streams are painted on the tarmac not far from where they actually flowed.
     </p>
     <div class="experience-steps">
       <div class="step">
@@ -598,6 +667,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- Future -->
 <!--<section class="story" style="background: var(&#45;&#45;gray-light);">-->
