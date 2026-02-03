@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A People's Map of the Don River | Toronto Water Atlas</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #1a1a1a;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .map-container {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #fff;
+    }
+
+    .map-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Speaker button style */
+    .speaker-btn {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background: #2563eb;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 10;
+      text-decoration: none;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .speaker-btn:hover {
+      background: #1d4ed8;
+      transform: scale(1.15);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+
+    .speaker-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: white;
+    }
+
+    /* Tooltip */
+    .speaker-btn::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: calc(100% + 8px);
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      z-index: 20;
+    }
+
+    .speaker-btn:hover::after {
+      opacity: 1;
+    }
+
+    /* Episode positions - adjusted to match actual map layout */
+    /* Map dimensions: 952 x 1288, episodes start around y=540 */
+    .ep1 { left: 2.5%; top: 43.8%; }
+    .ep2 { left: 2.5%; top: 47.2%; }
+    .ep3 { left: 2.5%; top: 50.8%; }
+    .interlude1 { left: 2.5%; top: 54.0%; }
+    .ep4 { left: 2.5%; top: 57.0%; }
+    .ep5 { left: 2.5%; top: 61.0%; }
+    .ep6 { left: 2.5%; top: 65.2%; }
+    .ep7 { left: 2.5%; top: 68.5%; }
+    .ep8 { left: 2.5%; top: 72.0%; }
+    .ep9 { left: 2.5%; top: 75.5%; }
+    .ep10 { left: 2.5%; top: 78.5%; }
+
+    /* Back button */
+    .back-link {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 14px;
+      z-index: 100;
+      transition: background 0.2s;
+    }
+
+    .back-link:hover {
+      background: rgba(0, 0, 0, 1);
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .back-link {
+        top: 10px;
+        left: 10px;
+        padding: 10px 16px;
+        font-size: 13px;
+      }
+
+      .speaker-btn {
+        width: 28px;
+        height: 28px;
+      }
+
+      .speaker-btn svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .speaker-btn::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .speaker-btn {
+        width: 32px;
+        height: 32px;
+      }
+
+      .speaker-btn svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+<a href="/" class="back-link">← Back to Atlas</a>
+
+<div class="map-container">
+  <img src="/don-map/Don-Map-4_annotated.png" alt="A People's Map of the Don River" class="map-image">
+
+  <!-- Speaker buttons for each episode -->
+  <a href="https://anchor.fm/donriverradio/episodes/Episode-1-Remembering-the-Don-with-Jennifer-Bonnell-e1kvfue"
+     target="_blank"
+     class="speaker-btn ep1"
+     data-tooltip="Episode 1: Remembering the Don">
+    <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+  </a>
+
+  <a href="https://anchor.fm/donriverradio/episodes/Episode-2-River-Cribs--Imported-Bridges--A-New-Don--with-NETAMI-STUART-e1l9osu"
+     target="_blank"
+     class="speaker-btn ep2"
+     data-tooltip="Episode 2: River Cribs & Imported Bridges">
+    <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+  </a>
+
+  <a href="https://anchor.fm/donriverradio/episodes/Episode-3-Rivers-Lost--Rivers-Found-with-Helen-Mills-and-John-Wilson-e1lradv"
+     target="_blank"
+     class="speaker-btn ep3"
+     data-tooltip="Episode 3: Rivers Lost / Rivers Found">
+    <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+  </a>
+
+  <a href="https://anchor.fm/donriverradio/episodes/Don-River-Radio-Interlude-1-Bonus-e1lj5qi"
+     target="_blank"
+     class="speaker-btn interlude1"
+     data-tooltip="Interlude 1: A Funeral / A Parade">
+    <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+  </a>
+
+  <a href="https://anchor.fm/donriverradio/episodes/Episode-4-Art-at-the-Confluence-with-Queen-Kukoyi--Nico-Taylor--and-Jay-Havens-e1m4ecb"
+     target="_blank"
+     class="speaker-btn ep4"
+     data-tooltip="Episode 4: Art at the Confluence">
+    <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+  </a>
+
+  <a href="https://anchor.fm/donriverradio/episodes/Episode-5-Decolonial-Waterways-and-Paths-to-Knowing-with-Elder-Catherine-Taomesre-Tmmaro-e1mdhs3"
+     target="_blank"
+     class="speaker-btn ep5"
+     data-tooltip="Episode 5: Decolonial Waterways">
+    <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+  </a>
+
+  <a href="https://anchor.fm/donriverradio/episodes/Episode-6-a-river-is-a-public-space-with-Daniel-Rotsztain-e1nbqh9"
+     target="_blank"
+     class="speaker-btn ep6"
+     data-tooltip="Episode 6: A River is a Public Space">
+    <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+  </a>
+
+  <a href="https://spotifyanchor-web.app.link/e/PnG5lsedMxb"
+     target="_blank"
+     class="speaker-btn ep7"
+     data-tooltip="Episode 7: Upstreaming">
+    <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+  </a>
+
+  <a href="https://spotifyanchor-web.app.link/e/EKb2YqUS3zb"
+     target="_blank"
+     class="speaker-btn ep8"
+     data-tooltip="Episode 8: Slow Gathering">
+    <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+  </a>
+
+  <a href="https://spotifyanchor-web.app.link/e/PnG5lsedMxb"
+     target="_blank"
+     class="speaker-btn ep9"
+     data-tooltip="Episode 9: Overland">
+    <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+  </a>
+
+  <a href="https://podcasters.spotify.com/pod/show/donriverradio/episodes/Episode-10-River-Craft-Maria-Hupfield-interviews-Sylvia-Plain--Chris-Mendoza--Anong-and-Lux-Beam-and-and-John-Hupfield-e2h2ue2"
+     target="_blank"
+     class="speaker-btn ep10"
+     data-tooltip="Episode 10: Rivercraft">
+    <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+  </a>
+</div>
+</body>
+</html>
