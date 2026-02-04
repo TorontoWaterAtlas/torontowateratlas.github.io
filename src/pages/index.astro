@@ -59,21 +59,62 @@ const projects = [
       },
     ]}
   />
+  
+  <!-- Acknowledgements Section -->
+    <section class="acknowledgements">
+      <div class="acknowledgements-inner">
+        <h2>Acknowledgements</h2>
+        <p>
+          We acknowledge that the Toronto Water Atlas is situated on lands and waters that have long been cared for by Indigenous peoples, including the Mississaugas of the Credit, the Anishnabeg, the Chippewa, the Haudenosaunee and the Wendat. Toronto sits within interconnected watersheds, shaped by longstanding relationships with water as living, relational, and shared. We recognize the many traditions of stewardship, mapping, storytelling, and collective care that have sustained these waters over time, and we acknowledge that this project is indebted to those ongoing memories, practices and responsibilities.
+        </p>
+        <p>
+          We extend our sincere thanks to all the participants who generously shared their time, and enthusiasm during our workshops. Their insights were instrumental in shaping the depth and perspective of this work, and we are truly grateful for their meaningful contributions and continued engagement. We also thank the Centre for Social Innovation (CSI) for hosting us, and Mariko Uda and Dashiel Carrera for leading and facilitating thoughtful and engaging workshops.
+        </p>
+      </div>
+    </section>
+  
+    <style>
+      .acknowledgements {
+        padding: 4rem 2rem;
+        background: #f8fafc;
+      }
+      .acknowledgements-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .acknowledgements h2 {
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: #1a365d;
+        margin-bottom: 1.5rem;
+      }
+      .acknowledgements p {
+        color: #475569;
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-bottom: 1.25rem;
+        text-align: justify;
+      }
+      .acknowledgements p:last-child {
+        margin-bottom: 0;
+      }
+    </style>
 
   <CallToAction
     actions={[
       {
         variant: 'primary',
-        text: 'Join us',
-        href: 'http://tiny.cc/wateratlasinterest',
+        text: 'Email Us',
+        href: 'mailto:torontowateratlas@gmail.com',
         target: '_blank',
         icon: 'tabler:external-link',
       },
     ]}
   >
-    <Fragment slot="title">Join Us in Shaping the Atlas</Fragment>
+    <Fragment slot="title">Contribute to the Atlas</Fragment>
     <Fragment slot="subtitle">
-      Please express interest by filling out <a href="http://tiny.cc/wateratlasinterest">the form below</a>!
+      Please express interest in adding your map to the atlas by emailing us!
     </Fragment>
   </CallToAction>
 </Layout>

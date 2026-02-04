@@ -11,10 +11,6 @@ export const headerData = {
       href: getPermalink('/about'),
     },
     {
-      text: 'Projects / Maps',
-      href: getPermalink('/projects'),
-    },
-    {
       text: 'Events & Resources',
       href: getPermalink('/events-and-resources'),
     },
@@ -23,9 +19,9 @@ export const headerData = {
       href: getPermalink('/community'),
     },
   ],
-  actions: [
-    { text: 'Join us', href: 'http://tiny.cc/wateratlasinterest', target: '_blank', icon: 'tabler:external-link' },
-  ],
+  // actions: [
+  //   { text: 'Join us', href: 'http://tiny.cc/wateratlasinterest', target: '_blank', icon: 'tabler:external-link' },
+  // ],
 };
 
 export const footerData = {
@@ -44,8 +40,14 @@ export const footerData = {
         { text: 'Tutorials', href: getPermalink('/category/tutorials') },
       ],
     },
+    {
+      title: 'Contact Us',
+      links: [
+        { text: 'Email', href: 'mailto:torontowateratlas@gmail.com' },
+      ],
+    }
   ],
   secondaryLinks: [],
   socialLinks: [],
-  footNote: 'All rights reserved.',
+  // footNote: 'All rights reserved.',
 };

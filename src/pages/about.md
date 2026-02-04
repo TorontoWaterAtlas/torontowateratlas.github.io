@@ -17,8 +17,6 @@ The aim of this project is to:
 3. **Reimagining Relationships With Water:** Water is deeply intertwined with the our past, and present, yet water is often hidden and forgotten today. **_Building an alternate, collective understanding can help us imagine a future of living with water._**
 4. **Alternate Approaches Require Diverse Expertise:** Working towards this alternate approach requires insights from a range of disciplines.
 
-For a longer description of the project, please visit [tiny.cc/wateratlasinfo](https://tiny.cc/wateratlasinfo)
-
 ## Our Values & Approach
 At the heart of the Toronto Water Atlas is a commitment to collaboration, care, transparency, and pluralism. We believe that how we talk about water—and who gets to shape that conversation—matters deeply. As a result, this project is grounded in the following values:
 
@@ -30,12 +28,17 @@ At the heart of the Toronto Water Atlas is a commitment to collaboration, care, 
 
 **Reflexivity and openness:** We are learning as we go. We welcome critique, ideas, and feedback—especially when something isn’t working or could be made more inclusive, accessible, or meaningful.
 
-Finally, the Toronto Water Atlas is both a public resource and an ongoing research project led by researchers affiliated with the [Toronto Climate Observatory](https://www.climateobservatory.ca/). All aspects of the project involving research have been reviewed and approved by a Research Ethics Board (REB). We are committed to making clear how documentation and contributions might be used, and this information is repeated at the beginning of every event or meetup:
-* Any data used for research will be fully anonymized. No names, identifying details, or direct quotes will be linked to individuals unless explicitly approved.
-* Photos and recordings taken during workshops or public events are used for documentation and qualitative analysis. If anyone prefers not to be included in these, they can opt out at any time.
-* Atlas pages and contributions may be referenced in research outputs (e.g., academic articles or presentations), but only as illustrative examples and never in a way that identifies individuals without prior consent.
-* Contributors will be provided access to any resulting publications or exhibitions where their work is featured. Similar to: [Similar to: https://antievictionmap.com/writing-new](https://antievictionmap.com/writing-new)
-* Participants and contributors can withdraw from the research study without any impact on their participation and contribution to the atlas.
+[//]: # (Finally, the Toronto Water Atlas is both a public resource and an ongoing research project led by researchers affiliated with the [Toronto Climate Observatory]&#40;https://www.climateobservatory.ca/&#41;. All aspects of the project involving research have been reviewed and approved by a Research Ethics Board &#40;REB&#41;. We are committed to making clear how documentation and contributions might be used, and this information is repeated at the beginning of every event or meetup:)
+
+[//]: # (* Any data used for research will be fully anonymized. No names, identifying details, or direct quotes will be linked to individuals unless explicitly approved.)
+
+[//]: # (* Photos and recordings taken during workshops or public events are used for documentation and qualitative analysis. If anyone prefers not to be included in these, they can opt out at any time.)
+
+[//]: # (* Atlas pages and contributions may be referenced in research outputs &#40;e.g., academic articles or presentations&#41;, but only as illustrative examples and never in a way that identifies individuals without prior consent.)
+
+[//]: # (* Contributors will be provided access to any resulting publications or exhibitions where their work is featured. Similar to: [Similar to: https://antievictionmap.com/writing-new]&#40;https://antievictionmap.com/writing-new&#41;)
+
+[//]: # (* Participants and contributors can withdraw from the research study without any impact on their participation and contribution to the atlas.)
 
 
 
