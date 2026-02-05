@@ -7,6 +7,10 @@ export const headerData = {
       href: getPermalink('/'),
     },
     {
+      text: 'Maps',           // Add this entry
+      href: getPermalink('/#maps'),  // Scrolls to #maps section
+    },
+    {
       text: 'About us',
       href: getPermalink('/about'),
     },
