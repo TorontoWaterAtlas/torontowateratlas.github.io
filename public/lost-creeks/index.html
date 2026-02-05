@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lost Creeks of South Etobicoke | Toronto Water Atlas</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --green-dark: #1a3a2f;
+      --green-medium: #2d5a47;
+      --green-light: #4a7c6b;
+      --brown: #6b5a3a;
+      --cream: #f5f2eb;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--cream);
+      color: #1e293b;
+      line-height: 1.7;
+    }
+
+    .back-link {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 14px;
+      z-index: 100;
+      transition: background 0.2s;
+    }
+
+    .back-link:hover {
+      background: rgba(0, 0, 0, 1);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--green-dark);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('/lost-creeks/images/1811-map.png');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.25;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+      rgba(26, 58, 47, 0.6) 0%,
+      rgba(26, 58, 47, 0.4) 50%,
+      rgba(26, 58, 47, 0.8) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+      max-width: 900px;
+    }
+
+    .hero-label {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* Section Styles */
+    .section-label {
+      display: inline-block;
+      background: var(--green-medium);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 2rem;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    /* Map Section */
+    .map-section {
+      padding: 5rem 2rem;
+      background: white;
+    }
+
+    .map-section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .map-section h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+      color: var(--green-dark);
+      margin-bottom: 2rem;
+    }
+
+    .map-container {
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      margin-bottom: 1.5rem;
+      background: white;
+    }
+
+    .map-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .map-caption {
+      color: #64748b;
+      font-size: 0.95rem;
+      font-style: italic;
+    }
+
+    /* Introduction */
+    .intro {
+      background: var(--green-dark);
+      color: white;
+      padding: 5rem 2rem;
+    }
+
+    .intro-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .intro h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 300;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .intro p {
+      font-size: 1.1rem;
+      line-height: 1.9;
+      opacity: 0.95;
+      margin-bottom: 1.5rem;
+    }
+
+    .highlight-quote {
+      font-size: 1.35rem;
+      font-style: italic;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.3);
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding: 2rem 1rem;
+      margin: 2.5rem 0 0;
+      color: rgba(255,255,255,0.95);
+    }
+
+    /* Indigenous Section */
+    .indigenous {
+      padding: 5rem 2rem;
+      background: var(--cream);
+    }
+
+    .indigenous-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .indigenous-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .indigenous-header h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+      color: var(--green-dark);
+    }
+
+    .indigenous p {
+      color: #475569;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .place-names {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .place-name {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      border-left: 4px solid var(--green-medium);
+    }
+
+    .place-name h4 {
+      font-size: 1.1rem;
+      color: var(--green-dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .place-name .meaning {
+      font-style: italic;
+      color: var(--green-medium);
+      font-size: 0.95rem;
+    }
+
+    /* Creek Story Sections */
+    .creek-section {
+      padding: 5rem 2rem;
+    }
+
+    .creek-section.alt {
+      background: white;
+    }
+
+    .creek-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .creek-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .creek-header h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+      color: var(--green-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .creek-status {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.35rem 1rem;
+      border-radius: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .creek-status.partial {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    .creek-status.buried {
+      background: #f8d7da;
+      color: #721c24;
+    }
+
+    .creek-status.restoration {
+      background: #cce5ff;
+      color: #004085;
+    }
+
+    .creek-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (min-width: 900px) {
+      .creek-content {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .creek-content.reverse {
+        direction: rtl;
+      }
+
+      .creek-content.reverse > * {
+        direction: ltr;
+      }
+    }
+
+    .creek-text p {
+      color: #475569;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .creek-text .highlight {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--green-medium);
+      border-left: 3px solid var(--green-medium);
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .creek-images {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .image-card {
+      border-radius: 0.75rem;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      background: white;
+    }
+
+    .image-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .image-card figcaption {
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      color: #64748b;
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    /* Image Grid */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .image-grid.three-col {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .image-grid .image-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    /* Quote Section */
+    .quote-section {
+      background: linear-gradient(135deg, var(--green-light) 0%, var(--green-medium) 100%);
+      padding: 5rem 2rem;
+      text-align: center;
+      color: white;
+    }
+
+    .quote-section blockquote {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .quote-section cite {
+      display: block;
+      margin-top: 2rem;
+      font-size: 1rem;
+      font-style: normal;
+      opacity: 0.9;
+    }
+
+    /* Timeline */
+    .timeline {
+      padding: 5rem 2rem;
+      background: var(--cream);
+    }
+
+    .timeline-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .timeline-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .timeline-header h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+      color: var(--green-dark);
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      align-items: flex-start;
+    }
+
+    .timeline-year {
+      flex-shrink: 0;
+      width: 80px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--green-medium);
+    }
+
+    .timeline-content {
+      flex: 1;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .timeline-item:last-child .timeline-content {
+      border-bottom: none;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.1rem;
+      color: var(--green-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-content p {
+      color: #475569;
+      font-size: 0.95rem;
+    }
+
+    /* Restoration */
+    .restoration {
+      padding: 5rem 2rem;
+      background: var(--green-dark);
+      color: white;
+    }
+
+    .restoration-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .restoration h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    .restoration p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      opacity: 0.95;
+      margin-bottom: 1.5rem;
+    }
+
+    .restoration-box {
+      background: rgba(255,255,255,0.1);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-top: 2rem;
+      text-align: left;
+    }
+
+    .restoration-box h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .restoration-box p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    /* About */
+    .about {
+      padding: 5rem 2rem;
+      background: white;
+    }
+
+    .about-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 600;
+      color: var(--green-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .about p {
+      color: #475569;
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .external-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--green-medium);
+      color: white;
+      text-decoration: none;
+      border-radius: 2rem;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .external-link:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+    }
+
+    .external-link svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    /* Footer */
+    .project-footer {
+      background: var(--green-dark);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .project-footer p {
+      opacity: 0.8;
+      font-size: 0.95rem;
+    }
+
+    .project-footer a {
+      color: var(--green-light);
+    }
+
+    .credits {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.875rem;
+      opacity: 0.7;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .back-link {
+        top: 10px;
+        left: 10px;
+        padding: 10px 16px;
+        font-size: 13px;
+      }
+
+      .hero {
+        min-height: 70vh;
+      }
+
+      .timeline-item {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .timeline-year {
+        width: auto;
+      }
+
+      .image-grid .image-card img {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+<a href="/" class="back-link">← Back to Atlas</a>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Lost Creeks of South Etobicoke</h1>
+    <p class="hero-subtitle">
+      The history and restoration of the buried waterways that once flowed through what is now southwest Toronto
+    </p>
+  </div>
+</section>
+
+<!-- 1811 Map -->
+<section class="map-section">
+  <div class="map-section-inner">
+    <span class="section-label">Historical Map</span>
+    <h2>The Creeks of 1811</h2>
+    <div class="map-container">
+      <img src="/lost-creeks/images/1811-map.png" alt="1811 Map of South Etobicoke Creeks superimposed over modern street grid">
+    </div>
+    <p class="map-caption">
+      The lost creeks of South Etobicoke as they existed in 1811, superimposed over today's street grid. Map courtesy of the Toronto and Region Conservation Authority.
+    </p>
+  </div>
+</section>
+
+<!-- Introduction -->
+<section class="intro">
+  <div class="intro-inner">
+    <h2>Waters Beneath Our Feet</h2>
+    <p>
+      The 1811 patent map reveals a landscape vastly different from today—one laced with creeks and streams flowing from the heights of land toward Lake Ontario. North Creek, Jackson Creek, Superior Creek, and Bonar Creek once carved their paths through thick forests, providing habitat for salmon and sustaining the Mississauga people who had lived here for thousands of years.
+    </p>
+    <p>
+      While most creeks in the old City of Toronto were buried in sewer lines long ago, many of the original creeks of South Etobicoke survived into the mid-20th century—and some significant portions still exist today. Their survival was a matter of geography and timing: located west of York, the area developed more slowly, giving these waterways a longer life.
+    </p>
+    <p class="highlight-quote">
+      "However you can still catch glimpses of many of these creeks and streams if you know where to look."
+    </p>
+  </div>
+</section>
+
+<!-- Indigenous -->
+<section class="indigenous">
+  <div class="indigenous-inner">
+    <div class="indigenous-header">
+      <span class="section-label">Indigenous History</span>
+      <h2>The Original Stewards</h2>
+    </div>
+    <p>
+      The lands surrounding Toronto, including all of Etobicoke, were acquired from the resident Ojibwa Mississauga nation as part of the Toronto Purchase in 1787. The treaty established the rights of the Mississauga to continue cultivating the lands at the mouth of Etobicoke Creek.
+    </p>
+    <p>
+      It was the Mississauga nation who gave place names to many South Etobicoke locations, names that speak to the ecological richness of the landscape before European settlement.
+    </p>
+    <div class="place-names">
+      <div class="place-name">
+        <h4>Mimico</h4>
+        <p class="meaning">"Home of the wild pigeon"</p>
+      </div>
+      <div class="place-name">
+        <h4>Etobicoke</h4>
+        <p class="meaning">"Where the alders grow"</p>
+      </div>
+      <div class="place-name">
+        <h4>Ziibinswan</h4>
+        <p class="meaning">"Small streams and creeks"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Jackson Creek -->
+<section class="creek-section alt">
+  <div class="creek-inner">
+    <div class="creek-header">
+      <span class="section-label">The Waterways</span>
+      <h2>Jackson Creek</h2>
+      <span class="creek-status partial">Partially Visible</span>
+    </div>
+    <div class="creek-content">
+      <div class="creek-text">
+        <p>
+          Jackson Creek once drained a large area of south Etobicoke, originating just north of Bloor Street West near Highway 427 and flowing in a southeasterly direction to Lake Ontario. Miraculously it still flows through most of its upper reaches north of the Gardiner Expressway.
+        </p>
+        <p>
+          Had the area been developed as a residential community, the creek would most likely have been buried. Instead, it was shunted off to the sides of large industrial and commercial properties, and though channelized, is now largely vegetated by trees and bullrushes.
+        </p>
+        <p class="highlight">
+          "On the Hospital Grounds its former valley can still be seen. Today it is called 'the swale'. Underneath, Jackson Creek flows through a storm sewer along its former course."
+        </p>
+        <p>
+          When the entrance to the Hospital was developed in the late 19th century, an ornate stone bridge was built across the creek. The balustrade has been removed but the historic bridge remains buried under fill, waiting to be resurrected.
+        </p>
+      </div>
+      <div class="creek-images">
+        <figure class="image-card">
+          <img src="/lost-creeks/images/jackson-creek-bridge-1910.png" alt="Bridge over Jackson Creek on the Hospital Grounds, circa 1910">
+          <figcaption>Bridge over Jackson Creek on the Mimico Asylum Grounds, circa 1910</figcaption>
+        </figure>
+        <figure class="image-card">
+          <img src="/lost-creeks/images/31%20-%20Jackson%20Creek%20n%20of%20Queensway%20w%20of%20Atomic%20on%20Canadian%20Linen%20-%20July%201-08.JPG" alt="Jackson Creek flowing through culvert">
+          <figcaption>Jackson Creek flows through a culvert under industrial properties, 2008</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="image-grid three-col" style="margin-top: 3rem;">
+      <figure class="image-card">
+        <img src="/lost-creeks/images/Simon's Cove - Mouth of Jackson Creek circa 1900.jpg" alt="Mouth of Jackson Creek circa 1900">
+        <figcaption>Mouth of Jackson Creek, circa 1900</figcaption>
+      </figure>
+      <figure class="image-card">
+        <img src="/lost-creeks/images/14%20-%20Jackson%20Creek%20-%20through%20Douglas%20Park%20looking%20south%20%20-%20May%202008.JPG" alt="Jackson Creek through Douglas Park">
+        <figcaption>Jackson Creek through Douglas Park, 2008</figcaption>
+      </figure>
+      <figure class="image-card">
+        <img src="/lost-creeks/images/8%20-%20Jackson%20Creek%20-%20former%20valley%20now%20swale%20-%20looking%20north%20from%20buried%20bridge%20toward%20Lake%20Shore%20Blvd%20W%20-%20May%202008.JPG" alt="The Swale - former Jackson Creek valley">
+        <figcaption>The Swale on Hospital Grounds today</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- North Creek -->
+<section class="creek-section">
+  <div class="creek-inner">
+    <div class="creek-header">
+      <h2>North Creek</h2>
+      <span class="creek-status partial">Partially Visible</span>
+    </div>
+    <div class="creek-content reverse">
+      <div class="creek-text">
+        <p>
+          North Creek originally drained a large area of south Etobicoke, flowing in a southeasterly direction to Lake Ontario from its headwaters near the interchange of present day Gardiner Expressway and Highway 427.
+        </p>
+        <p>
+          Most of the creek was placed in a sewer sometime after 1958, following four years of complaints that industry was dumping waste in the creek. At a Long Branch Council meeting in 1954, Councillor Maurice Breen openly admitted this was a problem, but explained the local sewage plant was already overloaded.
+        </p>
+        <p>
+          Today it disappears into a sewer just south of Laburnham Park, popping up on the Hospital Grounds at the foot of Kipling Avenue. Even though it has now been hijacked as a storm water system, the flow is relatively constant, providing important habitat for migrant warblers, black-crowned night herons, foxes and beavers.
+        </p>
+      </div>
+      <div class="creek-images">
+        <figure class="image-card">
+          <img src="/lost-creeks/images/1-%20North%20Creek%20-%20Map%20-%20on%20ws%20Hospital%20Grounds%20-%20Dept%20of%20Public%20Works%20-%20May%205,%201936.jpg" alt="1936 Map showing North Creek on Hospital Grounds">
+          <figcaption>North Creek flowing across the Hospital Grounds, Department of Public Works, 1936</figcaption>
+        </figure>
+        <figure class="image-card">
+          <img src="/lost-creeks/images/14%20-%20North%20Creek%20-%20Laburnham%20Park%20-%20flowing%20toward%20residential%20properties%20-%20Long%20Branch%20-%20May%202008.JPG" alt="North Creek through Laburnham Park">
+          <figcaption>North Creek flowing through Laburnham Park, 2008</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="image-grid" style="margin-top: 3rem;">
+      <figure class="image-card">
+        <img src="/lost-creeks/images/10%20-%20North%20Creek%20-%20Map%20-%20Route%20through%20Long%20Branch%201952%20-%20Underwriters%20Survey%20Bureau%20Ltd%201952%20-%20Toronto%20Vol%2014.JPG" alt="North Creek 1952 map">
+        <figcaption>North Creek through Long Branch, 1952</figcaption>
+      </figure>
+      <figure class="image-card">
+        <img src="/lost-creeks/images/4%20-%20North%20Creek%20looking%20south%20toward%20hospital%20buildings%202-%20lower%20portion%20-%20defined%20valley%20-%20Hospital%20Grounds%20-%20May%202008.JPG" alt="North Creek ravine today">
+        <figcaption>North Creek's natural ravine on Hospital Grounds</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Quote -->
+<section class="quote-section">
+  <blockquote>
+    "Originally covered by thick forests, these watersheds evolved over thousands of years to become a finely tuned and balanced system that produced a steady flow of cool, clear and pristine water abounding in sensitive coldwater fish species such as salmon."
+  </blockquote>
+  <cite>— Michael Harrison, Lost Creeks of South Etobicoke</cite>
+</section>
+
+<!-- Superior Creek -->
+<section class="creek-section alt">
+  <div class="creek-inner">
+    <div class="creek-header">
+      <h2>Superior Creek</h2>
+      <span class="creek-status buried">Completely Buried</span>
+    </div>
+    <div class="creek-content">
+      <div class="creek-text">
+        <p>
+          The headwaters of Superior Creek originated near present day Kipling Avenue, just north of the Gardiner Expressway, and flowed in a southeasterly direction to Lake Ontario through what is now Mimico.
+        </p>
+        <p>
+          Complaints regarding pollution in the creek from local industry and the nearby railway led to the lower portion being modified and piped in 1915 by the Town of Mimico as an infrastructure project to alleviate local unemployment.
+        </p>
+        <p>
+          The upper portion continued to flow freely across north Mimico until construction of new homes after WWII led to citizen complaints over pollution and safety. Articles began appearing in the <em>Advertiser</em> in the early 1950s when residents demanded action. One resident even threatened a tax boycott until the creek was gone.
+        </p>
+        <p class="highlight">
+          "Today, nothing remains of the creek, and a river of black asphalt covers the lower portion where it once flowed in a wide and steep ravine down Stanley Avenue."
+        </p>
+      </div>
+      <div class="creek-images">
+        <figure class="image-card">
+          <img src="/lost-creeks/images/1%20-%20Superior%20Creek%20-%20Map%20-%20east%20of%20present%20day%20Royal%20York%20Rd%20-%201856%20-%20JO%20Browne%20-%20Plan%20of%20the%20Town%20of%20Mimico%20-%20Archives%20of%20Ontario%20AOB-46%20.JPG" alt="Superior Creek 1912 map">
+          <figcaption>Superior Creek flowing through Mimico, 1912</figcaption>
+        </figure>
+        <figure class="image-card">
+          <img src="/lost-creeks/images/Superior%20Creek%20Lane%20sign%202%20-%20July%201-08.JPG" alt="Superior Creek Lane street sign">
+          <figcaption>Superior Creek Lane—the only reminder of the creek that once flowed here</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="image-grid three-col" style="margin-top: 3rem;">
+      <figure class="image-card">
+        <img src="/lost-creeks/images/Superior%20Creek%20-%20Goads%201913%20Excerpt.JPG" alt="Goads Fire Insurance map 1913">
+        <figcaption>Goads Fire Insurance map, 1913</figcaption>
+      </figure>
+      <figure class="image-card">
+        <img src="/lost-creeks/images/Superior%20Creek%20Complaint%20-%20July%202%201914.JPG" alt="1914 newspaper complaint">
+        <figcaption>1914 complaint about sanitary conditions</figcaption>
+      </figure>
+      <figure class="image-card">
+        <img src="/lost-creeks/images/Superior%20Creek%20-%20Map%20-%201952%20-%20through%20north%20Mimico%20-%20Underwriters%20Survey%20Bureau%201952.JPG" alt="Superior Creek 1952 map">
+        <figcaption>Superior Creek through north Mimico, 1952</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Bonar Creek -->
+<section class="creek-section">
+  <div class="creek-inner">
+    <div class="creek-header">
+      <h2>Bonar Creek</h2>
+      <span class="creek-status restoration">Restoration in Progress</span>
+    </div>
+    <div class="creek-content reverse">
+      <div class="creek-text">
+        <p>
+          Bonar Creek, a tributary of Mimico Creek, had its headwaters just north of Superior Creek and flowed in a southeasterly direction until it joined up with Mimico Creek at its vast wetland at Lake Ontario.
+        </p>
+        <p>
+          It continued to flow until about 1950, when most of it was placed in a sewer and parts of its former watercourse was filled in and topped with warehouses and a sewage treatment plant. In 1957, the operators of the McGuiness Distillery began to fill in the remainder of the creek's ravine to construct warehouses.
+        </p>
+        <p>
+          Today only the lower portion of the creek below the CNR rail line flows above ground, though it has been channelized.
+        </p>
+        <p class="highlight">
+          However, restoration of the creek is in process. The Bonar Creek Stormwater Management Facility will result in the restoration of the wetland that historically existed in this location.
+        </p>
+      </div>
+      <div class="creek-images">
+        <figure class="image-card">
+          <img src="/lost-creeks/images/bonar-creek-wetland-1889.png" alt="Confluence of Bonar and Mimico Creeks 1889">
+          <figcaption>Confluence of Bonar and Mimico Creeks, 1889 — Archives of Ontario</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section class="timeline">
+  <div class="timeline-inner">
+    <div class="timeline-header">
+      <span class="section-label">Environmental History</span>
+      <h2>Transformation of a Landscape</h2>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">1787</div>
+      <div class="timeline-content">
+        <h3>Toronto Purchase</h3>
+        <p>Lands acquired from the Ojibwa Mississauga nation, who had lived here for over 11,000 years.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">1793</div>
+      <div class="timeline-content">
+        <h3>First Sawmill</h3>
+        <p>Sawmill established on the Humber River in Etobicoke. Superior wood in this location was highly sought after for construction of early York.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">1842</div>
+      <div class="timeline-content">
+        <h3>50% Deforestation</h3>
+        <p>Forest depletion reaches 50%. Severe floods begin destroying mills as the water table drops and runoff increases.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">1870</div>
+      <div class="timeline-content">
+        <h3>Mills Close</h3>
+        <p>Not enough water in Etobicoke Creek to turn the great wheel at the Dundas Road mill. Water fluctuations devastate salmon populations.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">1915</div>
+      <div class="timeline-content">
+        <h3>Creeks Begin Disappearing</h3>
+        <p>Superior Creek's lower portion piped by the Town of Mimico as an unemployment relief project.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">1950s</div>
+      <div class="timeline-content">
+        <h3>Post-War Development</h3>
+        <p>Construction boom leads to filling of remaining creek valleys. Citizen complaints about flooding and pollution accelerate burial.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">2022</div>
+      <div class="timeline-content">
+        <h3>Council Motion</h3>
+        <p>Toronto City Council adopts motion to explore feasibility of assessing historical watercourse restoration opportunities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Restoration -->
+<section class="restoration">
+  <div class="restoration-inner">
+    <h2>Daylighting the Future</h2>
+    <p>
+      "Daylighting" is the term given to bringing lost rivers up to the surface where they can help manage stormwater during extreme weather events. Restored rivers provide habitat for plants that capture carbon dioxide while expanding routes for water to find its way to Lake Ontario.
+    </p>
+    <p>
+      In June 2022, Toronto City Council adopted a motion to explore the feasibility of assessing historical watercourse restoration opportunities across the city—good news for all the lost creeks of Toronto.
+    </p>
+    <div class="restoration-box">
+      <h3>Official Plan Update (2022)</h3>
+      <p>
+        "Opportunities to restore or daylight historical watercourses on public parklands or as part of comprehensive redevelopment should be considered where there is an opportunity and it is technically feasible."
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about">
+  <div class="about-inner">
+    <span class="section-label">Research</span>
+    <h2>About This Project</h2>
+    <p>
+      This research was compiled by <strong>Michael Harrison</strong>, who began studying the lost creeks of South Etobicoke in 1996 as President of Citizens Concerned About the Future of the Etobicoke Waterfront (CCFEW). His original report, <em>Toward the Ecological Restoration of South Etobicoke</em>, is available in the circulating collection of the Toronto Public Library.
+    </p>
+    <p>
+      Harrison contributed a chapter on the lost creeks to <em>HTO: Toronto's Water from Lake Iroquois to Lost Rivers to Low-flow Toilets</em>, published by Coach House Press in 2008. His ongoing research documents both the historical significance and restoration potential of these buried waterways.
+    </p>
+    <a href="https://lostcreeksofsouthetobicoke.blogspot.com/" target="_blank" rel="noopener" class="external-link">
+      <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zm-2 16H5V7h7V5H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+      Visit the Original Research Blog
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="project-footer">
+  <p>
+    <strong>Lost Creeks of South Etobicoke</strong> documents the environmental history and restoration potential of Toronto's buried waterways.
+  </p>
+  <p class="credits">
+    Research by <strong>Michael Harrison</strong> · Images © Michael Harrison · Part of the <a href="/">Toronto Water Atlas</a>
+  </p>
+</footer>
+</body>
+</html>
