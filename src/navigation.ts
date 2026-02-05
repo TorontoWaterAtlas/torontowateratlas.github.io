@@ -49,5 +49,5 @@ export const footerData = {
   ],
   secondaryLinks: [],
   socialLinks: [],
-  // footNote: 'All rights reserved.',
+  footNote: 'Website and project development led by Taneea S Agrawaal © Creative Commons license',
 };
