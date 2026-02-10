@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Volunteers Map | Toronto Water Atlas</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --blue-dark: #1a365d;
+      --blue-medium: #2563eb;
+      --blue-light: #3b82f6;
+      --white: #ffffff;
+      --gray-light: #f8fafc;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--gray-light);
+      color: #1e293b;
+      line-height: 1.7;
+    }
+
+    /* Map Hero Section */
+    .map-hero {
+      width: 100%;
+      height: 80vh;
+      min-height: 500px;
+      position: relative;
+      background: var(--blue-dark);
+    }
+
+    .map-hero iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Introduction Section */
+    .intro {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-medium) 100%);
+      color: white;
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+
+    .intro-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .intro-label {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      opacity: 0.8;
+      margin-bottom: 1rem;
+    }
+
+    .intro h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    .intro p {
+      font-size: 1.125rem;
+      line-height: 1.9;
+      opacity: 0.95;
+    }
+
+    .intro p + p {
+      margin-top: 1.5rem;
+    }
+
+    /* Orgs Section */
+    .orgs {
+      padding: 5rem 2rem;
+      background: white;
+    }
+
+    .orgs-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .orgs-label {
+      display: inline-block;
+      background: var(--blue-medium);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 2rem;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .orgs h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+      color: var(--blue-dark);
+      margin-bottom: 1rem;
+    }
+
+    .orgs > .orgs-inner > p {
+      color: #475569;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .org-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      text-align: left;
+    }
+
+    .org-card {
+      background: var(--gray-light);
+      border-radius: 1rem;
+      padding: 2rem;
+      border-left: 4px solid var(--blue-medium);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .org-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .org-card h3 {
+      font-size: 1.125rem;
+      color: var(--blue-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .org-card p {
+      color: #64748b;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Call to Action */
+    .cta {
+      background: linear-gradient(135deg, var(--blue-light) 0%, var(--blue-medium) 100%);
+      padding: 5rem 2rem;
+      text-align: center;
+      color: white;
+    }
+
+    .cta-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .cta p {
+      font-size: 1.05rem;
+      opacity: 0.9;
+      line-height: 1.8;
+    }
+
+    /* Footer */
+    .project-footer {
+      background: var(--blue-dark);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .project-footer p {
+      opacity: 0.8;
+      font-size: 0.95rem;
+    }
+
+    .project-footer a {
+      color: var(--blue-light);
+    }
+
+    .credits {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.875rem;
+      opacity: 0.7;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .map-hero {
+        height: 60vh;
+        min-height: 400px;
+      }
+
+      .intro, .orgs, .cta {
+        padding: 3rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Map Hero -->
+<section class="map-hero">
+  <iframe src="https://www.google.com/maps/d/u/1/embed?mid=1BOSauzHvwbLhuvTDOAgTh5MyyzZ7wbk&ehbc=2E312F&noprof=1" allowfullscreen loading="lazy"></iframe>
+</section>
+
+<!-- Introduction -->
+<section class="intro">
+  <div class="intro-inner">
+    <h2>Who's taking care of our water?</h2>
+    <p>
+      Across the Greater Toronto Area, dozens of organizations are working to protect, restore, and celebrate our waterways. From creek cleanups and habitat restoration to community walks and water monitoring, these groups are connecting people to the rivers, streams, and shorelines that shape our city.
+    </p>
+    <p>
+      This map is a starting point to discover the organizations working on water near you, find volunteer opportunities, and join the growing community of people who care about Toronto's relationship with water. Whether you're a nature lover looking to get outside, a newcomer wanting to explore the city, a student seeking volunteer hours, or someone simply looking to connect — there's a place for you!
+    </p>
+  </div>
+</section>
+
+<!-- Featured Organizations -->
+<section class="orgs">
+  <div class="orgs-inner">
+    <span class="orgs-label">Currently Featured</span>
+    <h2>Organizations on the Map</h2>
+    <div class="org-cards">
+      <div class="org-card">
+          <h3><a href="https://torontonaturestewards.org/" style="color: #1a1a1a">Toronto Nature Stewards (TNS)</a></h3>
+          <p>A stewardship programme commited to supporting the ecological restoration of ravines and natural areas by picking up litter, removing invasive plants, planting native species, and monitoring the environmental impact of stewardship activities.</p>
+      </div>
+      <div class="org-card">
+        <h3><a href="https://www.dontmesswiththedon.ca/" style="color: #1a1a1a">Don't Mess with the Don</a></h3>
+        <p>A community-driven initiative focused on committed to protecting and enhancing the natural heritage of the Don Valley and Toronto ravines through hands-on volunteer events and advocacy.</p>
+      </div>
+      <div class="org-card">
+        <h3><a href="https://humberriverpals.ca/" style="color: #1a1a1a">Humber River Pals</a></h3>
+        <p>A group dedicated to organise regular ravine cleanups to reduce the amount of litter in our ravine system while introducing the beauty and history of the Humber River to the high needs neighbourhood of Weston.Our objective is to empower and inspire local residents to be more conscientious about their waste and consumption.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta">
+  <div class="cta-inner">
+    <h2>Know an organization that should be on this map?</h2>
+    <p>We're looking to connect with more groups working on water issues across the GTA — from cleanup crews and nature watchers to arts organizations and community walks. If you'd like your organization featured, get in touch with us!</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="project-footer">
+  <p>
+    This map is an interactive directory of organizations working to protect and restore Toronto's waterways.
+  </p>
+  <p class="credits">
+    Built with <strong>Google My Maps</strong> · Graphics by <strong>Canva</strong> · Part of the <a href="/">Toronto Water Atlas</a>
+  </p>
+</footer>
+
+</body>
+</html>
