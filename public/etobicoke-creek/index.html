@@ -140,302 +140,37 @@
       display: block;
     }
 
-    /* Introduction Section */
-    .intro {
-      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-medium) 100%);
-      color: white;
-      padding: 6rem 2rem;
-      text-align: center;
-    }
-
-    .intro-inner {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .intro-label {
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      opacity: 0.8;
-      margin-bottom: 1rem;
-    }
-
-    .intro h2 {
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 300;
-      font-style: italic;
-      margin-bottom: 2rem;
-    }
-
-    .intro p {
-      font-size: 1.125rem;
-      line-height: 1.9;
-      opacity: 0.95;
-    }
-
-    .intro p + p {
-      margin-top: 1.5rem;
-    }
-
-    /* Story Sections */
-    .story {
-      padding: 5rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .story-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .story-label {
-      display: inline-block;
-      background: var(--blue-medium);
-      color: white;
-      padding: 0.5rem 1.5rem;
-      border-radius: 2rem;
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 1rem;
-    }
-
-    .story-title {
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      font-weight: 600;
-      color: var(--blue-dark);
-    }
-
-    .story-content {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    @media (min-width: 768px) {
-      .story-content {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .story-content.reverse {
-        direction: rtl;
-      }
-
-      .story-content.reverse > * {
-        direction: ltr;
-      }
-    }
-
-    .story-text h3 {
-      font-size: 1.5rem;
-      color: var(--blue-dark);
-      margin-bottom: 1rem;
-    }
-
-    .story-text p {
-      color: #475569;
-      margin-bottom: 1rem;
-    }
-
-    .story-text .highlight {
-      font-size: 1.25rem;
-      font-style: italic;
-      color: var(--blue-medium);
-      border-left: 3px solid var(--blue-medium);
-      padding-left: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .story-image {
-      border-radius: 1rem;
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-    }
-
-    .story-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* Voices Section */
-    .voices {
-      background: var(--blue-dark);
-      padding: 5rem 2rem;
-    }
-
-    .voices-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .voices-header {
-      text-align: center;
-      color: white;
-      margin-bottom: 3rem;
-    }
-
-    .voices-header h2 {
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      font-weight: 300;
-      margin-bottom: 1rem;
-    }
-
-    .voices-header p {
-      opacity: 0.8;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .voices-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-
-    @media (min-width: 900px) {
-      .voices-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-      }
-    }
-
-    .voice-card {
-      position: relative;
-      border-radius: 0.75rem;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-      display: block;
-      text-decoration: none;
-    }
-
-    .voice-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    }
-
-    .voice-card img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .voice-card .play-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 60px;
-      height: 60px;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-
-    .voice-card:hover .play-icon {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1.1);
-    }
-
-    .voice-card .play-icon svg {
-      width: 24px;
-      height: 24px;
-      fill: var(--blue-dark);
-      margin-left: 4px;
-    }
-
-    /* Quote Section */
-    .quote-section {
-      background: linear-gradient(135deg, var(--blue-light) 0%, var(--blue-medium) 100%);
-      padding: 5rem 2rem;
-      text-align: center;
-      color: white;
-    }
-
-    .quote-section blockquote {
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: clamp(1.25rem, 3vw, 1.75rem);
-      font-style: italic;
-      font-weight: 300;
-      line-height: 1.8;
-    }
-
-    .quote-section cite {
-      display: block;
-      margin-top: 2rem;
-      font-size: 1rem;
-      font-style: normal;
-      opacity: 0.9;
-    }
-
-    /* Experience Section */
-    .experience {
+    /* Watershed Map Section */
+    .watershed-map {
       padding: 5rem 2rem;
       background: white;
-    }
-
-    .experience-inner {
-      max-width: 900px;
-      margin: 0 auto;
       text-align: center;
     }
 
-    .experience h2 {
+    .watershed-map-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .watershed-map h2 {
       font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
       color: var(--blue-dark);
+      margin-bottom: 1rem;
+    }
+
+    .watershed-map p {
+      color: #475569;
+      font-size: 1.05rem;
+      line-height: 1.8;
       margin-bottom: 2rem;
     }
 
-    .experience-steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-      text-align: left;
-    }
-
-    .step {
-      background: var(--gray-light);
-      padding: 2rem;
+    .watershed-map img {
+      width: 100%;
+      height: auto;
       border-radius: 1rem;
-      position: relative;
-    }
-
-    .step-number {
-      position: absolute;
-      top: -1rem;
-      left: 1.5rem;
-      width: 2.5rem;
-      height: 2.5rem;
-      background: var(--blue-medium);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-    }
-
-    .step h3 {
-      margin-top: 0.5rem;
-      color: var(--blue-dark);
-      font-size: 1.125rem;
-    }
-
-    .step p {
-      margin-top: 0.5rem;
-      color: #64748b;
-      font-size: 0.95rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     }
 
     /* About the Artist */
@@ -571,6 +306,17 @@
   </button>
 </section>
 
+<!-- Watershed Map -->
+<section class="watershed-map">
+  <div class="watershed-map-inner">
+    <h2>Etobicoke Creek Watershed</h2>
+    <p style="text-align: justify">
+      This is an animated map tracing the flow of water along Etobicoke Creek, from its headwaters in Caledon through Brampton and Mississauga to its meeting with Lake Ontario. Created using hand-illustrated and watercolour elements, the animation visualizes water as a continuous, living presence moving through changing landscapes. Accompanied solely by the sound of flowing water, the work invites viewers to slow down, observe, and experience the creek as a single connected system.
+    </p>
+    <img src="/etobicoke-creek/images/Etobicoke creek map draft.png" alt="From Source to Shore is an animated map tracing the flow of water along Etobicoke Creek, from its headwaters in Caledon through Brampton and Mississauga to its meeting with Lake Ontario. Created using hand-illustrated and watercolour elements, the animation visualizes water as a continuous, living presence moving through changing landscapes. Accompanied solely by the sound of flowing water, the work invites viewers to slow down, observe, and experience the creek as a single connected system.">
+  </div>
+</section>
+
 <!-- About the Artist -->
 <section class="about-artist">
   <div class="about-artist-inner">
@@ -580,10 +326,10 @@
     <div class="about-artist-content">
       <span class="about-artist-label">About the Artist</span>
       <h2>Reena Dewani</h2>
-      <p>
+      <p style="text-align: justify">
         Reena is an interdisciplinary artist, educator, author, and librarian whose work is rooted in themes of hope, resilience, and interconnectedness. Whether it's a flower encased in resin or an illustrated butterfly fluttering across the screen in stop-motion, her work captures a moment in time.
         </p>
-      <p>
+      <p style="text-align: justify">
         Her current practice reflects her love of conservation, visual storytelling, literacy, and activism. Mediums include: illustration, watercolour, gouache, printmaking, stop-motion animation, and mixed media work incorporating materials found in nature. Her work is inspired by movement, migration and making by hand. Reena's work has been presented, projected and exhibited internationally and across Canada in galleries, public art initiatives, film festivals, and in publications.
         Please see more about Reena on her <a href="https://www.reenadevani.ca/">website.</a>
       </p>
