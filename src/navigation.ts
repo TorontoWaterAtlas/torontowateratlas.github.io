@@ -53,5 +53,5 @@ export const footerData = {
   ],
   secondaryLinks: [],
   socialLinks: [],
-  footNote: '© Creative Commons',
+  footNote: '',
 };

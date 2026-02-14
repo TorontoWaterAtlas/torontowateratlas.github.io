@@ -4,8 +4,11 @@ layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 ## Project Overview
-**The Toronto Water Atlas seeks to re-examine and understand our relationship with water—not simply as a natural resource or a problem to be managed, but as a life-giving source, and a connector of people and of communities.** It is an imaginative, interactive, and collaborative project that re-envisions the role of water in shaping the present and future of the Greater Toronto and Hamilton Area (GTHA), and the GTHA’s relationship with its rivers, creeks, and waterways. This Atlas is not simply a map of water systems or flood risks — it aims to be an artistic and critical examination of our relationship with water. As Toronto faces rising challenges from climate change, urban expansion, and social inequity, water remains both a vital resource and an area of conflict. This Atlas aims to shift the conversation from managing water to living with water—considering it as a shaper of ecosystems, cultures, and communities.
+The Toronto Water Atlas is an imaginative, interactive, and collaborative mapping project consisting of maps in different mediums, narratives and forms.
 
+Taking inspiration from the willful, divergent, and messy interactions between people and water, it attempts to see and show the Greater Toronto and Hamilton Area's rivers, creeks, and waterways differently. Toronto sits within interconnected watersheds shaped by longstanding relationships with water as living, relational, and shared. Yet far too often, these relationships and practices have existed at the margins of how the region understands and manages its water.
+
+The Atlas attempts to change this by building an alternate, collective understanding of water through an emphasis on local experiences and ongoing traditions of stewardship, storytelling, and collective care. It invites us to imagine different futures of living with water. Going forward, the atlas will continue to grow as a public web resource, embracing new maps and contributions as more people share their own relationships with the region's waterways.
 The aim of this project is to:
 * Highlight a **plurality of perspectives** about the GTHA’s relationship with its rivers, creeks, and waterways.
 * Build an **alternate collective understanding** of water through an emphasis on **local experiences and knowledges**.
