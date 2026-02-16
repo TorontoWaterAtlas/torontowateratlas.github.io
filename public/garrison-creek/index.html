@@ -2,10 +2,439 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garrison Creek Ravines | Toronto Water Atlas</title>
   <link rel="icon" type="image/png" href="/twa_fav.svg" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --blue-dark: #1a365d;
+      --blue-medium: #2563eb;
+      --blue-light: #3b82f6;
+      --white: #ffffff;
+      --gray-light: #f8fafc;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--gray-light);
+      color: #1e293b;
+      line-height: 1.7;
+    }
+
+    /* Back button */
+    .back-link {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 14px;
+      z-index: 100;
+      transition: background 0.2s;
+    }
+    .back-link:hover { background: rgba(0, 0, 0, 1); }
+
+    /* ── Slideshow ── */
+    .slideshow {
+      position: relative;
+      width: 100%;
+      height: 75vh;
+      max-height: 700px;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .slideshow-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Slide caption overlay */
+    .slide-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem 3rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      max-height: 40%;
+      overflow-y: auto;
+    }
+
+    .slide-caption:empty { display: none; }
+
+    /* Nav arrows */
+    .slide-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      font-size: 1.25rem;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slide-btn:hover { background: rgba(0,0,0,0.8); }
+    .slide-prev { left: 16px; }
+    .slide-next { right: 16px; }
+
+    /* Counter */
+    .slide-counter {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      z-index: 10;
+      letter-spacing: 0.05em;
+    }
+
+    /* Dot indicators */
+    .slide-dots {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 10;
+    }
+
+    .slide-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.4);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      padding: 0;
+    }
+    .slide-dot.active {
+      background: white;
+      transform: scale(1.3);
+    }
+
+    /* ── Intro Section ── */
+    .intro {
+      padding: 5rem 2rem;
+      background: var(--white);
+    }
+
+    .intro-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .intro-label {
+      display: inline-block;
+      background: var(--blue-medium);
+      color: white;
+      padding: 0.4rem 1.2rem;
+      border-radius: 2rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1.5rem;
+    }
+
+    .intro h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      color: var(--blue-dark);
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .intro h1 em {
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .intro .byline {
+      font-size: 1.1rem;
+      color: var(--blue-medium);
+      margin-bottom: 2rem;
+    }
+
+    .intro p {
+      font-size: 1.05rem;
+      color: #475569;
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+    }
+
+    .cta-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: var(--blue-dark);
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .cta-link:hover {
+      background: var(--blue-medium);
+      transform: translateY(-2px);
+    }
+
+    /* ── Description Sections ── */
+    .description-sections {
+      padding: 4rem 2rem;
+      background: var(--gray-light);
+    }
+
+    .description-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .desc-block {
+      background: white;
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    .desc-block h3 {
+      font-size: 1.25rem;
+      color: var(--blue-dark);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .desc-block p {
+      color: #475569;
+      font-size: 1rem;
+      line-height: 1.85;
+    }
+
+    /* ── Footer ── */
+    .project-footer {
+      background: var(--blue-dark);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .project-footer p {
+      opacity: 0.8;
+      font-size: 0.95rem;
+    }
+
+    .project-footer a {
+      color: var(--blue-light);
+    }
+
+    .credits {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.875rem;
+      opacity: 0.6;
+    }
+
+    @media (max-width: 640px) {
+      .slide-caption {
+        padding: 1rem 1.5rem;
+        font-size: 0.85rem;
+      }
+      .desc-block { padding: 1.5rem; }
+      .slide-dots { display: none; }
+    }
+  </style>
 </head>
 <body>
+
+<a href="/" class="back-link">&larr; Back to Atlas</a>
+
+<!-- ── Slideshow ── -->
+<div class="slideshow" id="slideshow">
+  <div class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">13</span></div>
+
+  <button class="slide-btn slide-prev" onclick="changeSlide(-1)" aria-label="Previous slide">&#10094;</button>
+  <button class="slide-btn slide-next" onclick="changeSlide(1)" aria-label="Next slide">&#10095;</button>
+
+  <div class="slideshow-track" id="track">
+    <!-- Slides injected by JS -->
+  </div>
+
+  <div class="slide-dots" id="dots"></div>
+</div>
+
+<!-- ── Intro ── -->
+<section class="intro">
+  <div class="intro-inner">
+    <span class="intro-label">Brown + Storey Architects</span>
+    <h1>Garrison Creek Ravines<br><em>Rain Water Ponds in an Urban Landscape</em></h1>
+    <p class="byline">A vision for reconnecting Toronto to its buried watershed</p>
+    <p>
+      The topography of Toronto's ravines was formed by glacial waters cutting through the landform in a series of sloping ridges. Garrison Creek once flowed openly from what is now Christie Pits, south through Trinity Bellwoods Park to Fort York and Lake Ontario. Today the creek runs through a buried sewer, but the traces of its ravine can still be seen in a pattern of city parks and schoolyards.
+    </p>
+    <p>
+      This study by Brown and Storey Architects envisions a connected stormwater and park system that would divert rainwater from the existing sewer into a series of ponds that re-create the natural drainage pattern of the watershed. The proposal identifies 120 hectares of open space across schoolyards, parks, and strips of open landscape that could accommodate stormwater and rainwater as an ecological gesture.
+    </p>
+    <a href="https://www.brownandstorey.com/project/garrison-creek-study/" target="_blank" rel="noopener" class="cta-link">
+      View full project at Brown + Storey &rarr;
+    </a>
+  </div>
+</section>
+
+<!-- ── Detailed Descriptions ── -->
+<section class="description-sections">
+  <div class="description-inner">
+
+    <div class="desc-block">
+      <h3>The Ravine Topography</h3>
+      <p>From the top of Lake Iroquois to the Toronto Islands, the existing lake shore profile and sections that were eventually filled in on Lake Ontario reveal the profile of Garrison Creek. The various open spaces that still remain evident — schoolyards, parks, and strips of open landscapes — trace the path of the original ravine.</p>
+    </div>
+
+    <div class="desc-block">
+      <h3>The Bifurcated Creek</h3>
+      <p>The bifurcated profile of Garrison Creek shows the split of the two branches of the ravine. The existing residences, schoolyards, and bridges have all been built into the trace of the founding ravine landform. The standout schoolyards, as traces, have mostly maintained the openness of sections of the ravine topography.</p>
+    </div>
+
+    <div class="desc-block">
+      <h3>120 Hectares of Opportunity</h3>
+      <p>Two plans illustrate the Garrison Creek ravine: one showing the sedimentary infilling, contrasting with a second plan that itemizes all the open spaces distributed within a creek distribution catchwork. The framed outline of these spaces represents 120 hectares of open space that could accommodate stormwater and rainwater as an ecological gesture.</p>
+    </div>
+
+    <div class="desc-block">
+      <h3>An Autonomous Pond System</h3>
+      <p>The proposal envisions a connected stormwater and park system in four zones depicted in the "pond system abstract." Stormwater from adjacent neighbourhoods would be diverted from the existing sewer system into a series of ponds that re-create the natural drainage pattern of the watershed.</p>
+    </div>
+
+    <div class="desc-block">
+      <h3>St. Hilda's College &amp; Linear Pond</h3>
+      <p>A parallel linear pond is placed between St. Hilda's walk and the edge of the Trinity Bellwoods Park remaining ravine. Culminating at the front of St. Hilda's men's shelter is an upper pond and bridge trellis that connects down to Dundas Street. Small bridges cross between sides of the pond, connecting to east-west streets. The Crawford Street recreation centre and a linear patchwork of gardens form the western section.</p>
+    </div>
+
+    <div class="desc-block">
+      <h3>Venice Biennale Model (1996)</h3>
+      <p>This model relief framework, shown at the 1996 Venice Biennale, illustrates a series of new layers and infrastructural improvements that extend and open up the ravine north and south to Dundas Street, and south to Queen Street. The Crawford Street bridge is uncovered, forming a network of new pathways and edges to the expanded ravine. Perched landforms take advantage of the outer edge of the ravine and the surrounding Trinity Bellwoods Park.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer class="project-footer">
+  <p>
+    Research and design by <a href="https://www.brownandstorey.com/project/garrison-creek-study/" target="_blank" rel="noopener">Brown + Storey Architects</a>
+  </p>
+  <div class="credits">
+    Part of the <a href="/">Toronto Water Atlas</a>
+  </div>
+</footer>
+
+<script>
+  const slides = [
+    { img: 'images/slide-1.jpg',  caption: '' },
+    { img: 'images/slide-2.jpg',  caption: '' },
+    { img: 'images/slide-3.jpg',  caption: 'The topography of Toronto\'s ravines formed by glacial waters cutting through the landform in a series of sloping ridges.' },
+    { img: 'images/slide-4.jpg',  caption: 'From the Top of Lake Iroquois to the Toronto Islands — the profile of Garrison Creek still illustrates the various open spaces that remain evident.' },
+    { img: 'images/slide-5.jpg',  caption: 'The bifurcated profile of the Garrison Creek shows the split of the two branches of the ravine.' },
+    { img: 'images/slide-6.jpg',  caption: 'The framed outline of these spaces represented 120 hectares of open space that could accommodate stormwater and rainwater.' },
+    { img: 'images/slide-7.jpg',  caption: '' },
+    { img: 'images/slide-8.jpg',  caption: '' },
+    { img: 'images/slide-9.jpg',  caption: 'This proposal envisions a connected stormwater and park system that re-creates the natural drainage pattern of the watershed.' },
+    { img: 'images/slide-10.jpg', caption: 'St. Hilda\'s College and Linear Pond — a parallel linear pond placed between St. Hilda\'s walk and the edge of Trinity Bellwoods Park.' },
+    { img: 'images/slide-11.jpg', caption: '' },
+    { img: 'images/slide-12.jpg', caption: '' },
+    { img: 'images/slide-13.jpg', caption: 'Model relief framework shown at the 1996 Venice Biennale — new layers and infrastructural improvements extending the ravine.' },
+  ];
+
+  let current = 0;
+  const track = document.getElementById('track');
+  const counter = document.getElementById('currentSlide');
+  const dotsContainer = document.getElementById('dots');
+
+  // Build slides
+  slides.forEach((s, i) => {
+    const div = document.createElement('div');
+    div.className = 'slide';
+    div.innerHTML = `<img src="${s.img}" alt="Garrison Creek Ravines — Slide ${i+1}" loading="${i === 0 ? 'eager' : 'lazy'}">` +
+      (s.caption ? `<div class="slide-caption">${s.caption}</div>` : '');
+    track.appendChild(div);
+
+    const dot = document.createElement('button');
+    dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Go to slide ${i+1}`);
+    dot.onclick = () => goToSlide(i);
+    dotsContainer.appendChild(dot);
+  });
+
+  function goToSlide(n) {
+    current = n;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    counter.textContent = current + 1;
+    document.querySelectorAll('.slide-dot').forEach((d, i) =>
+      d.classList.toggle('active', i === current)
+    );
+  }
+
+  function changeSlide(dir) {
+    let next = current + dir;
+    if (next < 0) next = slides.length - 1;
+    if (next >= slides.length) next = 0;
+    goToSlide(next);
+  }
+
+  // Keyboard nav
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') changeSlide(-1);
+    if (e.key === 'ArrowRight') changeSlide(1);
+  });
+
+  // Touch/swipe support
+  let touchStartX = 0;
+  const slideshow = document.getElementById('slideshow');
+  slideshow.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  slideshow.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+  });
+</script>
 
 </body>
 </html>
