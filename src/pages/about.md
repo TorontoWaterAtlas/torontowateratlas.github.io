@@ -33,6 +33,8 @@ At the heart of the Toronto Water Atlas is a commitment to collaboration, care, 
 
 _Website and project development led by Taneea S Agrawaal_ 
 
+###### _Graphics created using Canva_
+
 [//]: # (Finally, the Toronto Water Atlas is both a public resource and an ongoing research project led by researchers affiliated with the [Toronto Climate Observatory]&#40;https://www.climateobservatory.ca/&#41;. All aspects of the project involving research have been reviewed and approved by a Research Ethics Board &#40;REB&#41;. We are committed to making clear how documentation and contributions might be used, and this information is repeated at the beginning of every event or meetup:)
 
 [//]: # (* Any data used for research will be fully anonymized. No names, identifying details, or direct quotes will be linked to individuals unless explicitly approved.)
